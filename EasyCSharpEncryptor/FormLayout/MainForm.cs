@@ -1,8 +1,7 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-using EasyCSharpEncryptor.App;
+﻿using EasyCSharpEncryptor.App;
 using EasyCSharpEncryptor.Data;
+using System;
+using System.Windows.Forms;
 
 namespace EasyCSharpEncryptor.FormLayout
 {
@@ -14,9 +13,8 @@ namespace EasyCSharpEncryptor.FormLayout
 			MouseDown += OnMousePressed;
 			WarningText.Visible = false;
 			RestoreData();
-			Opacity = 0.0;
-			_animationState = AnimationState.Opening;
-			AnimationTimer.Start();
+
+			AnimateOpening();
 		}
 
 		private enum AnimationState { Opening, Closing }
@@ -70,6 +68,13 @@ namespace EasyCSharpEncryptor.FormLayout
 			{
 				IncludeUppercaseCheckbox.CheckState = CheckState.Checked;
 			}
+		}
+
+		private void AnimateOpening()
+		{
+			Opacity = 0.0;
+			_animationState = AnimationState.Opening;
+			AnimationTimer.Start();
 		}
 
 		private void OnTimerTick(object sender, EventArgs e)
