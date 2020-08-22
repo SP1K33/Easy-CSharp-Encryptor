@@ -24,6 +24,7 @@ namespace EasyCSharpEncryptor.FormLayout
 			var box = sender as TextBox;
 			var data = Proxy.DataContainer.GetData<PasswordGenerationData>();
 			data.Length = int.Parse(box.Text);
+			Proxy.DataContainer.SaveData(data);
 		}
 
 		private void OnIncludeSymbolsCheckBoxChanged(object sender, EventArgs e)
@@ -31,6 +32,7 @@ namespace EasyCSharpEncryptor.FormLayout
 			var box = sender as CheckBox;
 			var data = Proxy.DataContainer.GetData<PasswordGenerationData>();
 			data.IncludeSymbols = box.CheckState == CheckState.Checked;
+			Proxy.DataContainer.SaveData(data);
 		}
 
 		private void OnIncludeLowercaseCheckboxChanged(object sender, EventArgs e)
@@ -38,6 +40,7 @@ namespace EasyCSharpEncryptor.FormLayout
 			var box = sender as CheckBox;
 			var data = Proxy.DataContainer.GetData<PasswordGenerationData>();
 			data.IncludeLowercase = box.CheckState == CheckState.Checked;
+			Proxy.DataContainer.SaveData(data);
 		}
 
 		private void OnIncludeNumbersCheckBoxChanged(object sender, EventArgs e)
@@ -45,6 +48,7 @@ namespace EasyCSharpEncryptor.FormLayout
 			var box = sender as CheckBox;
 			var data = Proxy.DataContainer.GetData<PasswordGenerationData>();
 			data.IncludeNumbers = box.CheckState == CheckState.Checked;
+			Proxy.DataContainer.SaveData(data);
 		}
 
 
@@ -53,6 +57,7 @@ namespace EasyCSharpEncryptor.FormLayout
 			var box = sender as CheckBox;
 			var data = Proxy.DataContainer.GetData<PasswordGenerationData>();
 			data.IncludeUppercase = box.CheckState == CheckState.Checked;
+			Proxy.DataContainer.SaveData(data);
 		}
 
 		private void OnIncludeAmbiguousCheckboxChanged(object sender, EventArgs e)
@@ -60,6 +65,7 @@ namespace EasyCSharpEncryptor.FormLayout
 			var box = sender as CheckBox;
 			var data = Proxy.DataContainer.GetData<PasswordGenerationData>();
 			data.IncludeAmbiguous = box.CheckState == CheckState.Checked;
+			Proxy.DataContainer.SaveData(data);
 		}
 
 		private void OnPasswordGenerationButtonClicked(object sender, System.EventArgs e)

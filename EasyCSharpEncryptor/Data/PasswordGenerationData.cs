@@ -1,6 +1,6 @@
 ﻿namespace EasyCSharpEncryptor.Data
 {
-	public struct PasswordGenerationData : IData
+	public struct PasswordGenerationData
 	{
 		public int Length;
 		public bool IncludeNumbers;

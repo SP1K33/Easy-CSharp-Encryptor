@@ -7,7 +7,7 @@ namespace EasyCSharpEncryptor.Data
 {
 	public class DataContainer
 	{
-		private readonly Dictionary<Type, IData> _cachedData = new Dictionary<Type, IData>();
+		private readonly Dictionary<Type, object> _cachedData = new Dictionary<Type, object>();
 		private Dictionary<Type, string> _dataTypes;
 
 		public void Init()
@@ -31,6 +31,11 @@ namespace EasyCSharpEncryptor.Data
 			return (T)result;
 		}
 
+		public void SaveData<T>(T data)
+		{
+			_cachedData[typeof(T)] = data;
+		}
+
 		public void SaveData()
 		{
 			foreach (var dataPair in _cachedData)
@@ -39,7 +44,7 @@ namespace EasyCSharpEncryptor.Data
 				var dataPath = _dataTypes[dataType];
 				var serializer = new XmlSerializer(dataType);
 
-				using (var fileStream = new FileStream(dataPath, FileMode.OpenOrCreate))
+				using (var fileStream = new FileStream(dataPath, FileMode.Create))
 				{
 					var data = dataPair.Value;
 					serializer.Serialize(fileStream, data);
@@ -60,7 +65,7 @@ namespace EasyCSharpEncryptor.Data
 				{
 					using (var fileStream = new FileStream(path, FileMode.Open))
 					{
-						var data = (IData)serializer.Deserialize(fileStream);
+						var data = serializer.Deserialize(fileStream);
 						_cachedData.Add(type, data);
 					}
 				}
@@ -78,7 +83,7 @@ namespace EasyCSharpEncryptor.Data
 
 				using (var fileStream = new FileStream(path, FileMode.CreateNew))
 				{
-					var instance = (IData)Activator.CreateInstance(type);
+					var instance = Activator.CreateInstance(type);
 					serializer.Serialize(fileStream, instance);
 					_cachedData.Add(type, instance);
 				}
@@ -89,7 +94,7 @@ namespace EasyCSharpEncryptor.Data
 		{
 			_dataTypes = new Dictionary<Type, string>
 			{
-				{typeof(PasswordGenerationData), "PasswordSettings.json"}
+				{typeof(PasswordGenerationData), "PasswordSettings.xml"}
 			};
 		}
 

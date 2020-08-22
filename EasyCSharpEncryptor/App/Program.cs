@@ -1,8 +1,5 @@
-﻿using EasyCSharpEncryptor.FormLayout;
-using System;
+﻿using System;
 using System.Windows.Forms;
-using EasyCSharpEncryptor.Data;
-using EasyCSharpEncryptor.Features;
 
 namespace EasyCSharpEncryptor.App
 {
@@ -13,9 +10,8 @@ namespace EasyCSharpEncryptor.App
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			var form = new MainForm();
-			Proxy.Init(form);
-			Application.Run(form);
+			Proxy.Init();
+			Application.Run(Proxy.MainForm);
 		}
 	}
 }
