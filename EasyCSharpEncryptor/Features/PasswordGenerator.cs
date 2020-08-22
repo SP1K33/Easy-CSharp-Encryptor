@@ -12,12 +12,12 @@ namespace EasyCSharpEncryptor.Features
 	{
 		public PasswordGenerator()
 		{
-			Proxy.MainForm.GeneratePasswordButtonClickEvent += OnButtonPressed;
+			Proxy.PasswordGeneratorForm.GeneratePasswordButtonClickEvent += OnButtonPressed;
 		}
 
 		~PasswordGenerator()
 		{
-			Proxy.MainForm.GeneratePasswordButtonClickEvent -= OnButtonPressed;
+			Proxy.PasswordGeneratorForm.GeneratePasswordButtonClickEvent -= OnButtonPressed;
 		}
 
 		private const string _symbols = "!'#$%&()+,-.:@[]_`~{}";
@@ -33,7 +33,7 @@ namespace EasyCSharpEncryptor.Features
 			var password = Next();
 			if (!string.IsNullOrEmpty(password))
 			{
-				Proxy.MainForm.SetPasswordText(password);
+				Proxy.PasswordGeneratorForm.SetPasswordText(password);
 				Proxy.MainForm.HideWarning();
 			}
 			else

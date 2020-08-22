@@ -9,6 +9,7 @@ namespace EasyCSharpEncryptor.App
 		public static PasswordGenerator PasswordGenerator;
 		public static DataContainer DataContainer;
 		public static MainForm MainForm;
+		public static PasswordGeneratorForm PasswordGeneratorForm;
 
 		public static void Init()
 		{
@@ -16,7 +17,8 @@ namespace EasyCSharpEncryptor.App
 			DataContainer.Init();
 
 			MainForm = new MainForm();
-
+			PasswordGeneratorForm = new PasswordGeneratorForm();
+			
 			PasswordGenerator = new PasswordGenerator();
 		}
 	}

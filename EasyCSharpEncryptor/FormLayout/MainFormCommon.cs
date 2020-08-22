@@ -19,7 +19,7 @@ namespace EasyCSharpEncryptor.FormLayout
 
 		private void MoveHighlight(Button button)
 		{
-			HidePanels();
+			
 			SelectionHighlight.Location = new Point(button.Location.X, SelectionHighlight.Location.Y);
 		}
 
@@ -27,11 +27,6 @@ namespace EasyCSharpEncryptor.FormLayout
 		{
 			_animationState = AnimationState.Closing;
 			AnimationTimer.Start();
-		}
-
-		private void HidePanels()
-		{
-			PasswordGeneratorPanel.Visible = false;
 		}
 
 		[System.Runtime.InteropServices.DllImport("user32.dll")]

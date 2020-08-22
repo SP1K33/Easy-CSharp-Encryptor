@@ -1,13 +1,50 @@
 ﻿using System;
-using System.Windows.Forms;
 using EasyCSharpEncryptor.App;
 using EasyCSharpEncryptor.Data;
+using System.Windows.Forms;
 
 namespace EasyCSharpEncryptor.FormLayout
 {
-	public partial class MainForm
+	public partial class PasswordGeneratorForm : Form
 	{
+		public PasswordGeneratorForm()
+		{
+			InitializeComponent();
+			RestoreData();
+		}
+
 		public event Action GeneratePasswordButtonClickEvent;
+
+		private void RestoreData()
+		{
+			var data = Proxy.DataContainer.GetData<PasswordGenerationData>();
+			PasswordLengthTextBox.Text = data.Length.ToString();
+
+			if (data.IncludeAmbiguous)
+			{
+				IncludeAmbiguousCheckbox.CheckState = CheckState.Checked;
+			}
+
+			if (data.IncludeLowercase)
+			{
+				IncludeLowercaseCheckbox.CheckState = CheckState.Checked;
+			}
+
+			if (data.IncludeNumbers)
+			{
+				IncludeNumbersCheckBox.CheckState = CheckState.Checked;
+			}
+
+			if (data.IncludeSymbols)
+			{
+				IncludeSymbolsCheckbox.CheckState = CheckState.Checked;
+			}
+
+			if (data.IncludeUppercase)
+			{
+				IncludeUppercaseCheckbox.CheckState = CheckState.Checked;
+			}
+		}
 
 		public void SetPasswordText(string password)
 		{
@@ -66,13 +103,6 @@ namespace EasyCSharpEncryptor.FormLayout
 			var data = Proxy.DataContainer.GetData<PasswordGenerationData>();
 			data.IncludeAmbiguous = box.CheckState == CheckState.Checked;
 			Proxy.DataContainer.SaveData(data);
-		}
-
-		private void OnPasswordGenerationButtonClicked(object sender, System.EventArgs e)
-		{
-			MoveHighlight((Button)sender);
-
-			PasswordGeneratorPanel.Visible = true;
 		}
 	}
 }

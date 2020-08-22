@@ -12,13 +12,15 @@ namespace EasyCSharpEncryptor.FormLayout
 			InitializeComponent();
 			MouseDown += OnMousePressed;
 			WarningText.Visible = false;
-			RestoreData();
+			Title.MouseDown += OnMousePressed;
+			ChildFormContainerPanel.MouseDown += OnMousePressed;
 
 			AnimateOpening();
 		}
 
 		private enum AnimationState { Opening, Closing }
 		private AnimationState _animationState;
+		private Form _currentChildForm;
 
 		public event Action DecryptionButtonClickEvent;
 
@@ -32,42 +34,31 @@ namespace EasyCSharpEncryptor.FormLayout
 		private void OnEncryptionButtonClicked(object sender, System.EventArgs e)
 		{
 			MoveHighlight((Button)sender);
+
 		}
 
-		private void RestoreData()
+		private void OnPasswordGenerationButtonClicked(object sender, System.EventArgs e)
 		{
-			RestorePasswordLayout();
+			MoveHighlight((Button)sender);
+
+			OpenChildForm(Proxy.PasswordGeneratorForm);
 		}
 
-		private void RestorePasswordLayout()
+		private void OpenChildForm(Form child)
 		{
-			var data = Proxy.DataContainer.GetData<PasswordGenerationData>();
-			PasswordLengthTextBox.Text = data.Length.ToString();
-
-			if (data.IncludeAmbiguous)
+			if (_currentChildForm == child)
 			{
-				IncludeAmbiguousCheckbox.CheckState = CheckState.Checked;
+				return;
 			}
-
-			if (data.IncludeLowercase)
-			{
-				IncludeLowercaseCheckbox.CheckState = CheckState.Checked;
-			}
-
-			if (data.IncludeNumbers)
-			{
-				IncludeNumbersCheckBox.CheckState = CheckState.Checked;
-			}
-
-			if (data.IncludeSymbols)
-			{
-				IncludeSymbolsCheckbox.CheckState = CheckState.Checked;
-			}
-
-			if (data.IncludeUppercase)
-			{
-				IncludeUppercaseCheckbox.CheckState = CheckState.Checked;
-			}
+			_currentChildForm?.Hide();
+			_currentChildForm = child;
+			_currentChildForm.TopLevel = false;
+			_currentChildForm.TopMost = true;
+			_currentChildForm.FormBorderStyle = FormBorderStyle.None;
+			ChildFormContainerPanel.Controls.Add(_currentChildForm);
+			ChildFormContainerPanel.Tag = _currentChildForm;
+			_currentChildForm.BringToFront();
+			_currentChildForm.Show();
 		}
 
 		private void AnimateOpening()
