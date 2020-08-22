@@ -1,4 +1,6 @@
-﻿namespace EasyCSharpEncryptor
+﻿using EasyCSharpEncryptor.App;
+
+namespace EasyCSharpEncryptor.FormLayout
 {
 	public partial class MainForm
 	{
@@ -13,6 +15,7 @@
 		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
 		protected override void Dispose(bool disposing)
 		{
+			Proxy.DataContainer.SaveData();
 			if (disposing && (components != null))
 			{
 				components.Dispose();
@@ -38,13 +41,16 @@
 			this.CloseButton = new System.Windows.Forms.Button();
 			this.GeneratePasswordButton = new System.Windows.Forms.Button();
 			this.PasswordGeneratorPanel = new System.Windows.Forms.Panel();
+			this.WarningText = new System.Windows.Forms.Label();
+			this.IncludeNumbersCheckBox = new System.Windows.Forms.CheckBox();
+			this.IncludeNumbersLabel = new System.Windows.Forms.Label();
 			this.PasswordResultTextBox = new System.Windows.Forms.TextBox();
-			this.ExcludeAmbiguousCheckbox = new System.Windows.Forms.CheckBox();
+			this.IncludeAmbiguousCheckbox = new System.Windows.Forms.CheckBox();
 			this.IncludeUppercaseCheckbox = new System.Windows.Forms.CheckBox();
 			this.IncludeLowercaseCheckbox = new System.Windows.Forms.CheckBox();
 			this.IncludeSymbolsCheckbox = new System.Windows.Forms.CheckBox();
 			this.PasswordLengthTextBox = new System.Windows.Forms.TextBox();
-			this.ExcludeAmbiguousCharactersLabel = new System.Windows.Forms.Label();
+			this.IncludeAmbiguousCharactersLabel = new System.Windows.Forms.Label();
 			this.IncludeUppercaseLabel = new System.Windows.Forms.Label();
 			this.IncludeLowercaseLabel = new System.Windows.Forms.Label();
 			this.IncludeSymbolsLabel = new System.Windows.Forms.Label();
@@ -111,13 +117,16 @@
 			// 
 			// PasswordGeneratorPanel
 			// 
+			this.PasswordGeneratorPanel.Controls.Add(this.WarningText);
+			this.PasswordGeneratorPanel.Controls.Add(this.IncludeNumbersCheckBox);
+			this.PasswordGeneratorPanel.Controls.Add(this.IncludeNumbersLabel);
 			this.PasswordGeneratorPanel.Controls.Add(this.PasswordResultTextBox);
-			this.PasswordGeneratorPanel.Controls.Add(this.ExcludeAmbiguousCheckbox);
+			this.PasswordGeneratorPanel.Controls.Add(this.IncludeAmbiguousCheckbox);
 			this.PasswordGeneratorPanel.Controls.Add(this.IncludeUppercaseCheckbox);
 			this.PasswordGeneratorPanel.Controls.Add(this.IncludeLowercaseCheckbox);
 			this.PasswordGeneratorPanel.Controls.Add(this.IncludeSymbolsCheckbox);
 			this.PasswordGeneratorPanel.Controls.Add(this.PasswordLengthTextBox);
-			this.PasswordGeneratorPanel.Controls.Add(this.ExcludeAmbiguousCharactersLabel);
+			this.PasswordGeneratorPanel.Controls.Add(this.IncludeAmbiguousCharactersLabel);
 			this.PasswordGeneratorPanel.Controls.Add(this.IncludeUppercaseLabel);
 			this.PasswordGeneratorPanel.Controls.Add(this.IncludeLowercaseLabel);
 			this.PasswordGeneratorPanel.Controls.Add(this.IncludeSymbolsLabel);
@@ -126,24 +135,45 @@
 			resources.ApplyResources(this.PasswordGeneratorPanel, "PasswordGeneratorPanel");
 			this.PasswordGeneratorPanel.Name = "PasswordGeneratorPanel";
 			// 
+			// WarningText
+			// 
+			resources.ApplyResources(this.WarningText, "WarningText");
+			this.WarningText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+			this.WarningText.Name = "WarningText";
+			// 
+			// IncludeNumbersCheckBox
+			// 
+			resources.ApplyResources(this.IncludeNumbersCheckBox, "IncludeNumbersCheckBox");
+			this.IncludeNumbersCheckBox.Name = "IncludeNumbersCheckBox";
+			this.IncludeNumbersCheckBox.UseVisualStyleBackColor = true;
+			this.IncludeNumbersCheckBox.CheckedChanged += new System.EventHandler(this.OnIncludeNumbersCheckBoxChanged);
+			// 
+			// IncludeNumbersLabel
+			// 
+			resources.ApplyResources(this.IncludeNumbersLabel, "IncludeNumbersLabel");
+			this.IncludeNumbersLabel.Name = "IncludeNumbersLabel";
+			// 
 			// PasswordResultTextBox
 			// 
 			this.PasswordResultTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
 			this.PasswordResultTextBox.ForeColor = System.Drawing.Color.Green;
 			resources.ApplyResources(this.PasswordResultTextBox, "PasswordResultTextBox");
 			this.PasswordResultTextBox.Name = "PasswordResultTextBox";
+			this.PasswordResultTextBox.ReadOnly = true;
 			// 
-			// ExcludeAmbiguousCheckbox
+			// IncludeAmbiguousCheckbox
 			// 
-			resources.ApplyResources(this.ExcludeAmbiguousCheckbox, "ExcludeAmbiguousCheckbox");
-			this.ExcludeAmbiguousCheckbox.Name = "ExcludeAmbiguousCheckbox";
-			this.ExcludeAmbiguousCheckbox.UseVisualStyleBackColor = true;
+			resources.ApplyResources(this.IncludeAmbiguousCheckbox, "IncludeAmbiguousCheckbox");
+			this.IncludeAmbiguousCheckbox.Name = "IncludeAmbiguousCheckbox";
+			this.IncludeAmbiguousCheckbox.UseVisualStyleBackColor = true;
+			this.IncludeAmbiguousCheckbox.CheckedChanged += new System.EventHandler(this.OnIncludeAmbiguousCheckboxChanged);
 			// 
 			// IncludeUppercaseCheckbox
 			// 
 			resources.ApplyResources(this.IncludeUppercaseCheckbox, "IncludeUppercaseCheckbox");
 			this.IncludeUppercaseCheckbox.Name = "IncludeUppercaseCheckbox";
 			this.IncludeUppercaseCheckbox.UseVisualStyleBackColor = true;
+			this.IncludeUppercaseCheckbox.CheckedChanged += new System.EventHandler(this.OnIncludeUppercaseCheckboxChanged);
 			// 
 			// IncludeLowercaseCheckbox
 			// 
@@ -167,10 +197,10 @@
 			this.PasswordLengthTextBox.Name = "PasswordLengthTextBox";
 			this.PasswordLengthTextBox.TextChanged += new System.EventHandler(this.OnPasswordLengthTextBoxChanged);
 			// 
-			// ExcludeAmbiguousCharactersLabel
+			// IncludeAmbiguousCharactersLabel
 			// 
-			resources.ApplyResources(this.ExcludeAmbiguousCharactersLabel, "ExcludeAmbiguousCharactersLabel");
-			this.ExcludeAmbiguousCharactersLabel.Name = "ExcludeAmbiguousCharactersLabel";
+			resources.ApplyResources(this.IncludeAmbiguousCharactersLabel, "IncludeAmbiguousCharactersLabel");
+			this.IncludeAmbiguousCharactersLabel.Name = "IncludeAmbiguousCharactersLabel";
 			// 
 			// IncludeUppercaseLabel
 			// 
@@ -197,13 +227,13 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
 			resources.ApplyResources(this, "$this");
-			this.Controls.Add(this.PasswordGeneratorPanel);
 			this.Controls.Add(this.CloseButton);
 			this.Controls.Add(this.PasswordGenerationButton);
 			this.Controls.Add(this.SelectionHighlight);
 			this.Controls.Add(this.DecryptionButton);
 			this.Controls.Add(this.Title);
 			this.Controls.Add(this.EncryptionButton);
+			this.Controls.Add(this.PasswordGeneratorPanel);
 			this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.MaximizeBox = false;
@@ -224,16 +254,19 @@
 		private System.Windows.Forms.Button GeneratePasswordButton;
 		private System.Windows.Forms.Panel PasswordGeneratorPanel;
 		private System.Windows.Forms.TextBox PasswordLengthTextBox;
-		private System.Windows.Forms.Label ExcludeAmbiguousCharactersLabel;
+		private System.Windows.Forms.Label IncludeAmbiguousCharactersLabel;
 		private System.Windows.Forms.Label IncludeUppercaseLabel;
 		private System.Windows.Forms.Label IncludeLowercaseLabel;
 		private System.Windows.Forms.Label IncludeSymbolsLabel;
 		private System.Windows.Forms.Label PasswordLengthLabel;
 		private System.Windows.Forms.CheckBox IncludeSymbolsCheckbox;
-		private System.Windows.Forms.CheckBox ExcludeAmbiguousCheckbox;
+		private System.Windows.Forms.CheckBox IncludeAmbiguousCheckbox;
 		private System.Windows.Forms.CheckBox IncludeUppercaseCheckbox;
 		private System.Windows.Forms.CheckBox IncludeLowercaseCheckbox;
 		private System.Windows.Forms.TextBox PasswordResultTextBox;
+		private System.Windows.Forms.CheckBox IncludeNumbersCheckBox;
+		private System.Windows.Forms.Label IncludeNumbersLabel;
+		private System.Windows.Forms.Label WarningText;
 	}
 }
 

@@ -151,7 +151,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Title.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="EncryptionButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -201,7 +201,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;EncryptionButton.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="DecryptionButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -253,7 +253,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DecryptionButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="SelectionHighlight.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 117</value>
@@ -274,7 +274,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SelectionHighlight.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="PasswordGenerationButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -327,7 +327,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;PasswordGenerationButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="CloseButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -363,7 +363,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CloseButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="GeneratePasswordButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -375,7 +375,7 @@
     <value>NoControl</value>
   </data>
   <data name="GeneratePasswordButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 208</value>
+    <value>16, 234</value>
   </data>
   <data name="GeneratePasswordButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>755, 33</value>
@@ -396,16 +396,109 @@
     <value>PasswordGeneratorPanel</value>
   </data>
   <data name="&gt;&gt;GeneratePasswordButton.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>14</value>
+  </data>
+  <data name="WarningText.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="WarningText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 279</value>
+  </data>
+  <data name="WarningText.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>754, 42</value>
+  </data>
+  <data name="WarningText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>754, 42</value>
+  </data>
+  <data name="WarningText.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="WarningText.Text" xml:space="preserve">
+    <value>Here will be some warning</value>
+  </data>
+  <data name="WarningText.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;WarningText.Name" xml:space="preserve">
+    <value>WarningText</value>
+  </data>
+  <data name="&gt;&gt;WarningText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WarningText.Parent" xml:space="preserve">
+    <value>PasswordGeneratorPanel</value>
+  </data>
+  <data name="&gt;&gt;WarningText.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="IncludeNumbersCheckBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="IncludeNumbersCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="IncludeNumbersCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>309, 84</value>
+  </data>
+  <data name="IncludeNumbersCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
+  </data>
+  <data name="IncludeNumbersCheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;IncludeNumbersCheckBox.Name" xml:space="preserve">
+    <value>IncludeNumbersCheckBox</value>
+  </data>
+  <data name="&gt;&gt;IncludeNumbersCheckBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;IncludeNumbersCheckBox.Parent" xml:space="preserve">
+    <value>PasswordGeneratorPanel</value>
+  </data>
+  <data name="&gt;&gt;IncludeNumbersCheckBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="IncludeNumbersLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="IncludeNumbersLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="IncludeNumbersLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 80</value>
+  </data>
+  <data name="IncludeNumbersLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 21</value>
+  </data>
+  <data name="IncludeNumbersLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="IncludeNumbersLabel.Text" xml:space="preserve">
+    <value>Include numbers: </value>
+  </data>
+  <data name="&gt;&gt;IncludeNumbersLabel.Name" xml:space="preserve">
+    <value>IncludeNumbersLabel</value>
+  </data>
+  <data name="&gt;&gt;IncludeNumbersLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;IncludeNumbersLabel.Parent" xml:space="preserve">
+    <value>PasswordGeneratorPanel</value>
+  </data>
+  <data name="&gt;&gt;IncludeNumbersLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="PasswordResultTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>379, 14</value>
   </data>
   <data name="PasswordResultTextBox.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>392, 174</value>
+    <value>392, 207</value>
+  </data>
+  <data name="PasswordResultTextBox.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="PasswordResultTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>392, 174</value>
+    <value>392, 207</value>
   </data>
   <data name="PasswordResultTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -420,34 +513,34 @@
     <value>PasswordGeneratorPanel</value>
   </data>
   <data name="&gt;&gt;PasswordResultTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
-  <data name="ExcludeAmbiguousCheckbox.AutoSize" type="System.Boolean, mscorlib">
+  <data name="IncludeAmbiguousCheckbox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="ExcludeAmbiguousCheckbox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="IncludeAmbiguousCheckbox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="ExcludeAmbiguousCheckbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>309, 174</value>
+  <data name="IncludeAmbiguousCheckbox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>309, 207</value>
   </data>
-  <data name="ExcludeAmbiguousCheckbox.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="IncludeAmbiguousCheckbox.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
-  <data name="ExcludeAmbiguousCheckbox.TabIndex" type="System.Int32, mscorlib">
+  <data name="IncludeAmbiguousCheckbox.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
   </data>
-  <data name="&gt;&gt;ExcludeAmbiguousCheckbox.Name" xml:space="preserve">
-    <value>ExcludeAmbiguousCheckbox</value>
+  <data name="&gt;&gt;IncludeAmbiguousCheckbox.Name" xml:space="preserve">
+    <value>IncludeAmbiguousCheckbox</value>
   </data>
-  <data name="&gt;&gt;ExcludeAmbiguousCheckbox.Type" xml:space="preserve">
+  <data name="&gt;&gt;IncludeAmbiguousCheckbox.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ExcludeAmbiguousCheckbox.Parent" xml:space="preserve">
+  <data name="&gt;&gt;IncludeAmbiguousCheckbox.Parent" xml:space="preserve">
     <value>PasswordGeneratorPanel</value>
   </data>
-  <data name="&gt;&gt;ExcludeAmbiguousCheckbox.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;IncludeAmbiguousCheckbox.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="IncludeUppercaseCheckbox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -456,7 +549,7 @@
     <value>NoControl</value>
   </data>
   <data name="IncludeUppercaseCheckbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>309, 117</value>
+    <value>309, 150</value>
   </data>
   <data name="IncludeUppercaseCheckbox.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
@@ -474,7 +567,7 @@
     <value>PasswordGeneratorPanel</value>
   </data>
   <data name="&gt;&gt;IncludeUppercaseCheckbox.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="IncludeLowercaseCheckbox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -483,7 +576,7 @@
     <value>NoControl</value>
   </data>
   <data name="IncludeLowercaseCheckbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>309, 84</value>
+    <value>309, 117</value>
   </data>
   <data name="IncludeLowercaseCheckbox.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
@@ -501,7 +594,7 @@
     <value>PasswordGeneratorPanel</value>
   </data>
   <data name="&gt;&gt;IncludeLowercaseCheckbox.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="IncludeSymbolsCheckbox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -525,7 +618,7 @@
     <value>PasswordGeneratorPanel</value>
   </data>
   <data name="&gt;&gt;IncludeSymbolsCheckbox.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="PasswordLengthTextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Century Gothic, 12pt, style=Bold</value>
@@ -534,7 +627,7 @@
     <value>309, 12</value>
   </data>
   <data name="PasswordLengthTextBox.MaxLength" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="PasswordLengthTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 27</value>
@@ -543,7 +636,7 @@
     <value>12</value>
   </data>
   <data name="PasswordLengthTextBox.Text" xml:space="preserve">
-    <value>5</value>
+    <value>0</value>
   </data>
   <data name="PasswordLengthTextBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
@@ -558,38 +651,38 @@
     <value>PasswordGeneratorPanel</value>
   </data>
   <data name="&gt;&gt;PasswordLengthTextBox.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
-  <data name="ExcludeAmbiguousCharactersLabel.AutoSize" type="System.Boolean, mscorlib">
+  <data name="IncludeAmbiguousCharactersLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="ExcludeAmbiguousCharactersLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="IncludeAmbiguousCharactersLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="ExcludeAmbiguousCharactersLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 146</value>
+  <data name="IncludeAmbiguousCharactersLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 179</value>
   </data>
-  <data name="ExcludeAmbiguousCharactersLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 42</value>
+  <data name="IncludeAmbiguousCharactersLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 42</value>
   </data>
-  <data name="ExcludeAmbiguousCharactersLabel.TabIndex" type="System.Int32, mscorlib">
+  <data name="IncludeAmbiguousCharactersLabel.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
-  <data name="ExcludeAmbiguousCharactersLabel.Text" xml:space="preserve">
-    <value>Exclude ambiguous characters 
-(e.g. { } [ ] ( ) / \ ' " ` ~ , ; : . &lt; &gt;):</value>
+  <data name="IncludeAmbiguousCharactersLabel.Text" xml:space="preserve">
+    <value>Include ambiguous characters 
+/ \ : * ? " &lt; &gt; |</value>
   </data>
-  <data name="&gt;&gt;ExcludeAmbiguousCharactersLabel.Name" xml:space="preserve">
-    <value>ExcludeAmbiguousCharactersLabel</value>
+  <data name="&gt;&gt;IncludeAmbiguousCharactersLabel.Name" xml:space="preserve">
+    <value>IncludeAmbiguousCharactersLabel</value>
   </data>
-  <data name="&gt;&gt;ExcludeAmbiguousCharactersLabel.Type" xml:space="preserve">
+  <data name="&gt;&gt;IncludeAmbiguousCharactersLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ExcludeAmbiguousCharactersLabel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;IncludeAmbiguousCharactersLabel.Parent" xml:space="preserve">
     <value>PasswordGeneratorPanel</value>
   </data>
-  <data name="&gt;&gt;ExcludeAmbiguousCharactersLabel.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="&gt;&gt;IncludeAmbiguousCharactersLabel.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="IncludeUppercaseLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -598,7 +691,7 @@
     <value>NoControl</value>
   </data>
   <data name="IncludeUppercaseLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 113</value>
+    <value>12, 146</value>
   </data>
   <data name="IncludeUppercaseLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>274, 21</value>
@@ -619,7 +712,7 @@
     <value>PasswordGeneratorPanel</value>
   </data>
   <data name="&gt;&gt;IncludeUppercaseLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="IncludeLowercaseLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -628,7 +721,7 @@
     <value>NoControl</value>
   </data>
   <data name="IncludeLowercaseLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 80</value>
+    <value>12, 113</value>
   </data>
   <data name="IncludeLowercaseLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>263, 21</value>
@@ -649,7 +742,7 @@
     <value>PasswordGeneratorPanel</value>
   </data>
   <data name="&gt;&gt;IncludeLowercaseLabel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="IncludeSymbolsLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -679,7 +772,7 @@
     <value>PasswordGeneratorPanel</value>
   </data>
   <data name="&gt;&gt;IncludeSymbolsLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="PasswordLengthLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -706,13 +799,13 @@
     <value>PasswordGeneratorPanel</value>
   </data>
   <data name="&gt;&gt;PasswordLengthLabel.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="PasswordGeneratorPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 133</value>
   </data>
   <data name="PasswordGeneratorPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>783, 374</value>
+    <value>783, 335</value>
   </data>
   <data name="PasswordGeneratorPanel.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -730,13 +823,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;PasswordGeneratorPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>6</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>783, 519</value>
+    <value>783, 480</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Century Gothic, 12pt</value>
