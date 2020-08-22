@@ -14,7 +14,13 @@ namespace EasyCSharpEncryptor.FormLayout
 			MouseDown += OnMousePressed;
 			WarningText.Visible = false;
 			RestoreData();
+			Opacity = 0.0;
+			_animationState = AnimationState.Opening;
+			AnimationTimer.Start();
 		}
+
+		private enum AnimationState { Opening, Closing }
+		private AnimationState _animationState;
 
 		public event Action DecryptionButtonClickEvent;
 
@@ -63,6 +69,27 @@ namespace EasyCSharpEncryptor.FormLayout
 			if (data.IncludeUppercase)
 			{
 				IncludeUppercaseCheckbox.CheckState = CheckState.Checked;
+			}
+		}
+
+		private void OnTimerTick(object sender, EventArgs e)
+		{
+			double fadePerTick = 0.075;
+			if (Opacity < 1.0 && _animationState == AnimationState.Opening)
+			{
+				Opacity += fadePerTick;
+			}
+			else if (Opacity > 0.0 && _animationState == AnimationState.Closing)
+			{
+				Opacity -= fadePerTick;
+			}
+			else
+			{
+				AnimationTimer.Stop();
+				if (_animationState == AnimationState.Closing)
+				{
+					Dispose(true);
+				}
 			}
 		}
 	}

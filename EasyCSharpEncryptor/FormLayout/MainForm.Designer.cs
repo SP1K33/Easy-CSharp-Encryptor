@@ -16,6 +16,7 @@ namespace EasyCSharpEncryptor.FormLayout
 		protected override void Dispose(bool disposing)
 		{
 			Proxy.DataContainer.SaveData();
+
 			if (disposing && (components != null))
 			{
 				components.Dispose();
@@ -32,6 +33,7 @@ namespace EasyCSharpEncryptor.FormLayout
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.Title = new System.Windows.Forms.Label();
 			this.EncryptionButton = new System.Windows.Forms.Button();
@@ -55,6 +57,7 @@ namespace EasyCSharpEncryptor.FormLayout
 			this.IncludeLowercaseLabel = new System.Windows.Forms.Label();
 			this.IncludeSymbolsLabel = new System.Windows.Forms.Label();
 			this.PasswordLengthLabel = new System.Windows.Forms.Label();
+			this.AnimationTimer = new System.Windows.Forms.Timer(this.components);
 			this.PasswordGeneratorPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -222,6 +225,11 @@ namespace EasyCSharpEncryptor.FormLayout
 			resources.ApplyResources(this.PasswordLengthLabel, "PasswordLengthLabel");
 			this.PasswordLengthLabel.Name = "PasswordLengthLabel";
 			// 
+			// AnimationTimer
+			// 
+			this.AnimationTimer.Interval = 2;
+			this.AnimationTimer.Tick += new System.EventHandler(this.OnTimerTick);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -267,6 +275,7 @@ namespace EasyCSharpEncryptor.FormLayout
 		private System.Windows.Forms.CheckBox IncludeNumbersCheckBox;
 		private System.Windows.Forms.Label IncludeNumbersLabel;
 		private System.Windows.Forms.Label WarningText;
+		private System.Windows.Forms.Timer AnimationTimer;
 	}
 }
 

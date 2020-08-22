@@ -25,7 +25,8 @@ namespace EasyCSharpEncryptor.FormLayout
 
 		private void OnCloseButtonClicked(object sender, System.EventArgs e)
 		{
-			Dispose(true);
+			_animationState = AnimationState.Closing;
+			AnimationTimer.Start();
 		}
 
 		private void HidePanels()
