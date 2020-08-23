@@ -151,7 +151,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Title.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
+  </data>
+  <data name="EncryptionButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
   <data name="EncryptionButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -175,6 +178,9 @@
   </data>
   <data name="EncryptionButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>261, 36</value>
+  </data>
+  <data name="EncryptionButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="EncryptionButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>261, 79</value>
@@ -201,7 +207,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;EncryptionButton.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="DecryptionButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -253,7 +259,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DecryptionButton.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="SelectionHighlight.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 117</value>
@@ -274,7 +280,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SelectionHighlight.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="PasswordGenerationButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -327,7 +333,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;PasswordGenerationButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="CloseButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -363,13 +369,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CloseButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="WarningText.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="WarningText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 412</value>
+    <value>17, 395</value>
   </data>
   <data name="WarningText.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>754, 42</value>
@@ -396,7 +402,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;WarningText.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <metadata name="AnimationTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -420,13 +426,64 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ChildFormContainerPanel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="GitHubButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAYAAAA6GuKaAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAABEVJREFUaEPFmV2IFlUYx3fXXcP0YrXwRrzQMlPcNi1SQsivxdUbA70wUchYCzTw
+        QsgPBGHxxlI3LzYF6SJCFsG+tKtuREXtzsWPSqVIUkshqWy1tFx//znPvjvrzpyZnXdm/MGPnZ3znOc5
+        7/vOe2bOeWuqobe3twHnYTt+g7/gPxjmX7yOR/F9bMUnLUV5UPQF/AhvYhb+xk9xFlrWgqBAE36B/2Me
+        PMBjmP/gSTgCd+N9LAIN/mNstJLVQaKpeAHL4ArOtNLZIMFC/EPZSuQuvmFDGBp0XIJ3lOUxoMtwtQ0l
+        HXSYg/qGP07u4VIbkh8CJ2LWqSxvbuMMG1o0BOhm8a2iIziBa3AP/qwTOfA7atZYi0d0IoLvMf5mROPm
+        ICyaVRamuOG4Ai+r4RE0femu2GfUnH4D1+MoS6mcC9QQw24LGwgN49F3HU+x0Aqc0/y9HXV3XIkzcSzq
+        RfX5NM7A5fghduBoS1GBc2Mw7qal63uahfbDyc6gOZ7Ku1IU1PjLlYrkc7RI4J9xmDS9DXp38oT8w9A3
+        hv/wOQsPOmwNTvuZZeGFQP4JroyXD/qCa/G74JSfdUGHgiD/666Ml6tYr2A9W+gb76Mbn7D8hUD+OvxS
+        xRKYruB33bGXBZa7UKjzLGqm8LFBgQfccSx6wqu1vIVDrcNB1Xi6FKSP3keH5SsF6iV98t0KuuWOY3nT
+        8pUC9Xx3RnFLQUlfwlbLVwrUa3ZlY7mnoCQWWb5SoN6Lrmw8aQb9luUrBeppi8FLmkG3W75SoN47rmws
+        PQpKWqEcsXylQL29rmwsVxV03h3HoievkZazUKijR4pLKurhpAIPuWMvlQVAkVDnNVfOyz4FbnLHXn7E
+        EZa7EMivZ4/jKpZAm4JfcceJ7MfCbufk3hhU8aN7ygQF16N2O9OwD4dbnVwgn97hDaiH/CTOYKWjtmDT
+        oo6Lsc71zgb9pdaO2iJOy0brHiSYjOFXqlX0dNRCVUv8qFu9Fg7al56PWrx6XwTtmhkacTZuwdOY9AgR
+        RkuxsZau8qq1cAyj/Y9nUG1v64QHTYsvWbpIaJ9kcVnptFT9cHIKatc+jHYxtehV+yc6EcM2S+OFuB0u
+        fMhop2mcpRkIDTuDkIF8hWp7Cs/qRASD9kSiIE6/IGRhk6UYDI0jUdtQYXTdvWzto1Ff2ouoXSLt4r+H
+        w4IECRCnbbceHAqnsMFSREOAvtH6OMJ8hhZRHeT5LciYDm2ETrSufghchuEFpt5tzaUWkR1ypB20HuTm
+        Wrd00KENw7+xaOB6xzUNBh8XfzWN6ZIK+qSB2DSD1vSWbfFBR+2MPvq7oPgTf0L9PqgCqfdEiE0atH4u
+        abHwbJDgVbymbDHoMspr0OfweQutDhLpjncQo+5geQxaOXZhvr/kklC2oJ49wlQzaO1H607cZM3FQAE9
+        lS3Cr1HPKz9gqnlaENuFv6KWVc12egjU1DwEnNj58jE/tsgAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="GitHubButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="GitHubButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="GitHubButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>715, 5</value>
+  </data>
+  <data name="GitHubButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="GitHubButton.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;GitHubButton.Name" xml:space="preserve">
+    <value>GitHubButton</value>
+  </data>
+  <data name="&gt;&gt;GitHubButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GitHubButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GitHubButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>783, 471</value>
+    <value>783, 448</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Century Gothic, 12pt</value>

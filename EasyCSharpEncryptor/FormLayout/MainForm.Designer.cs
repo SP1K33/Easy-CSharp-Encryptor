@@ -44,6 +44,7 @@ namespace EasyCSharpEncryptor.FormLayout
 			this.WarningText = new System.Windows.Forms.Label();
 			this.AnimationTimer = new System.Windows.Forms.Timer(this.components);
 			this.ChildFormContainerPanel = new System.Windows.Forms.Panel();
+			this.GitHubButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// Title
@@ -54,8 +55,9 @@ namespace EasyCSharpEncryptor.FormLayout
 			// 
 			// EncryptionButton
 			// 
-			this.EncryptionButton.FlatAppearance.BorderSize = 0;
 			resources.ApplyResources(this.EncryptionButton, "EncryptionButton");
+			this.EncryptionButton.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.EncryptionButton.FlatAppearance.BorderSize = 0;
 			this.EncryptionButton.ForeColor = System.Drawing.Color.White;
 			this.EncryptionButton.Name = "EncryptionButton";
 			this.EncryptionButton.UseVisualStyleBackColor = true;
@@ -63,6 +65,7 @@ namespace EasyCSharpEncryptor.FormLayout
 			// 
 			// DecryptionButton
 			// 
+			this.DecryptionButton.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.DecryptionButton.FlatAppearance.BorderSize = 0;
 			resources.ApplyResources(this.DecryptionButton, "DecryptionButton");
 			this.DecryptionButton.ForeColor = System.Drawing.Color.White;
@@ -78,6 +81,7 @@ namespace EasyCSharpEncryptor.FormLayout
 			// 
 			// PasswordGenerationButton
 			// 
+			this.PasswordGenerationButton.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.PasswordGenerationButton.FlatAppearance.BorderSize = 0;
 			resources.ApplyResources(this.PasswordGenerationButton, "PasswordGenerationButton");
 			this.PasswordGenerationButton.ForeColor = System.Drawing.Color.White;
@@ -88,6 +92,7 @@ namespace EasyCSharpEncryptor.FormLayout
 			// CloseButton
 			// 
 			this.CloseButton.BackColor = System.Drawing.Color.Brown;
+			this.CloseButton.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.CloseButton.FlatAppearance.BorderSize = 0;
 			resources.ApplyResources(this.CloseButton, "CloseButton");
 			this.CloseButton.ForeColor = System.Drawing.Color.White;
@@ -111,14 +116,25 @@ namespace EasyCSharpEncryptor.FormLayout
 			resources.ApplyResources(this.ChildFormContainerPanel, "ChildFormContainerPanel");
 			this.ChildFormContainerPanel.Name = "ChildFormContainerPanel";
 			// 
+			// GitHubButton
+			// 
+			resources.ApplyResources(this.GitHubButton, "GitHubButton");
+			this.GitHubButton.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.GitHubButton.FlatAppearance.BorderSize = 0;
+			this.GitHubButton.ForeColor = System.Drawing.Color.Black;
+			this.GitHubButton.Name = "GitHubButton";
+			this.GitHubButton.UseVisualStyleBackColor = true;
+			this.GitHubButton.Click += new System.EventHandler(this.OnGitHubButtonClicked);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
 			resources.ApplyResources(this, "$this");
+			this.Controls.Add(this.GitHubButton);
+			this.Controls.Add(this.CloseButton);
 			this.Controls.Add(this.ChildFormContainerPanel);
 			this.Controls.Add(this.WarningText);
-			this.Controls.Add(this.CloseButton);
 			this.Controls.Add(this.PasswordGenerationButton);
 			this.Controls.Add(this.SelectionHighlight);
 			this.Controls.Add(this.DecryptionButton);
@@ -143,6 +159,7 @@ namespace EasyCSharpEncryptor.FormLayout
 		private System.Windows.Forms.Label WarningText;
 		private System.Windows.Forms.Timer AnimationTimer;
 		private System.Windows.Forms.Panel ChildFormContainerPanel;
+		private System.Windows.Forms.Button GitHubButton;
 	}
 }
 

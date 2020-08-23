@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Resources\GitHubIcon.png" />
     <Content Include="Resources\KeyIcon.png" />
     <Content Include="Resources\LockIcon.png" />
     <Content Include="Resources\PasswordIcon.png" />

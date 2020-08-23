@@ -1,6 +1,7 @@
 ﻿using EasyCSharpEncryptor.App;
 using EasyCSharpEncryptor.Data;
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace EasyCSharpEncryptor.FormLayout
@@ -70,7 +71,7 @@ namespace EasyCSharpEncryptor.FormLayout
 
 		private void OnTimerTick(object sender, EventArgs e)
 		{
-			double fadePerTick = 0.075;
+			const double fadePerTick = 0.075;
 			if (Opacity < 1.0 && _animationState == AnimationState.Opening)
 			{
 				Opacity += fadePerTick;
@@ -87,6 +88,12 @@ namespace EasyCSharpEncryptor.FormLayout
 					Dispose(true);
 				}
 			}
+		}
+
+		private void OnGitHubButtonClicked(object sender, EventArgs e)
+		{
+			const string link = "https://github.com/SP1K33/Easy-CSharp-Encryptor";
+			Process.Start(link);
 		}
 	}
 }
