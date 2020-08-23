@@ -1,5 +1,4 @@
 ﻿using EasyCSharpEncryptor.App;
-using EasyCSharpEncryptor.Data;
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -11,12 +10,8 @@ namespace EasyCSharpEncryptor.FormLayout
 		public MainForm()
 		{
 			InitializeComponent();
-			MouseDown += OnMousePressed;
-			WarningText.Visible = false;
-			Title.MouseDown += OnMousePressed;
-			ChildFormContainerPanel.MouseDown += OnMousePressed;
 
-			AnimateOpening();
+			Init();
 		}
 
 		private enum AnimationState { Opening, Closing }
@@ -25,23 +20,31 @@ namespace EasyCSharpEncryptor.FormLayout
 
 		public event Action DecryptionButtonClickEvent;
 
-		private void OnDecryptionButtonClicked(object sender, System.EventArgs e)
+		private void Init()
+		{
+			MouseDown += OnMousePressed;
+			WarningText.Visible = false;
+			Title.MouseDown += OnMousePressed;
+			ChildFormContainerPanel.MouseDown += OnMousePressed;
+			OpenChildForm(Proxy.EncryptionForm);
+			PlayOpenAnimation();
+		}
+
+		private void OnDecryptionButtonClicked(object sender, EventArgs e)
 		{
 			MoveHighlight((Button)sender);
-
 			DecryptionButtonClickEvent?.Invoke();
 		}
 
-		private void OnEncryptionButtonClicked(object sender, System.EventArgs e)
+		private void OnEncryptionButtonClicked(object sender, EventArgs e)
 		{
 			MoveHighlight((Button)sender);
-
+			OpenChildForm(Proxy.EncryptionForm);
 		}
 
-		private void OnPasswordGenerationButtonClicked(object sender, System.EventArgs e)
+		private void OnPasswordGenerationButtonClicked(object sender, EventArgs e)
 		{
 			MoveHighlight((Button)sender);
-
 			OpenChildForm(Proxy.PasswordGeneratorForm);
 		}
 
@@ -54,15 +57,11 @@ namespace EasyCSharpEncryptor.FormLayout
 			_currentChildForm?.Hide();
 			_currentChildForm = child;
 			_currentChildForm.TopLevel = false;
-			_currentChildForm.TopMost = true;
-			_currentChildForm.FormBorderStyle = FormBorderStyle.None;
 			ChildFormContainerPanel.Controls.Add(_currentChildForm);
-			ChildFormContainerPanel.Tag = _currentChildForm;
-			_currentChildForm.BringToFront();
 			_currentChildForm.Show();
 		}
 
-		private void AnimateOpening()
+		private void PlayOpenAnimation()
 		{
 			Opacity = 0.0;
 			_animationState = AnimationState.Opening;

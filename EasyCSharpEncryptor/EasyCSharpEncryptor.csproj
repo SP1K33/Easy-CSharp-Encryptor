@@ -53,6 +53,12 @@
     <Compile Include="Data\DataContainer.cs" />
     <Compile Include="Data\PasswordGenerationData.cs" />
     <Compile Include="Features\PasswordGenerator.cs" />
+    <Compile Include="FormLayout\EncryptionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLayout\EncryptionForm.Designer.cs">
+      <DependentUpon>EncryptionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLayout\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,9 @@
       <DependentUpon>PasswordGeneratorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormLayout\EncryptionForm.resx">
+      <DependentUpon>EncryptionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLayout\MainForm.en.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,9 +113,8 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Resources\GitHubIcon.png" />
-    <Content Include="Resources\KeyIcon.png" />
-    <Content Include="Resources\LockIcon.png" />
     <Content Include="Resources\PasswordIcon.png" />
+    <Content Include="Resources\TrashBinIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

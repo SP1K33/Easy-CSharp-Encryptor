@@ -88,7 +88,6 @@ namespace EasyCSharpEncryptor.FormLayout
 			Proxy.DataContainer.SaveData(data);
 		}
 
-
 		private void OnIncludeUppercaseCheckboxChanged(object sender, EventArgs e)
 		{
 			var box = sender as CheckBox;

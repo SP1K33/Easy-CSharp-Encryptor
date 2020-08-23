@@ -61,7 +61,7 @@
 			this.PasswordLengthTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
 			this.PasswordLengthTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
 			this.PasswordLengthTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-			this.PasswordLengthTextBox.Location = new System.Drawing.Point(309, 9);
+			this.PasswordLengthTextBox.Location = new System.Drawing.Point(293, 7);
 			this.PasswordLengthTextBox.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
 			this.PasswordLengthTextBox.MaxLength = 3;
 			this.PasswordLengthTextBox.Name = "PasswordLengthTextBox";
@@ -99,6 +99,7 @@
 			// 
 			// GeneratePasswordButton
 			// 
+			this.GeneratePasswordButton.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.GeneratePasswordButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.GeneratePasswordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.GeneratePasswordButton.Font = new System.Drawing.Font("Century Gothic", 12F);
@@ -117,13 +118,13 @@
 			// 
 			this.PasswordResultTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
 			this.PasswordResultTextBox.ForeColor = System.Drawing.Color.Green;
-			this.PasswordResultTextBox.Location = new System.Drawing.Point(375, 9);
+			this.PasswordResultTextBox.Location = new System.Drawing.Point(357, 9);
 			this.PasswordResultTextBox.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
 			this.PasswordResultTextBox.MinimumSize = new System.Drawing.Size(394, 205);
 			this.PasswordResultTextBox.Multiline = true;
 			this.PasswordResultTextBox.Name = "PasswordResultTextBox";
 			this.PasswordResultTextBox.ReadOnly = true;
-			this.PasswordResultTextBox.Size = new System.Drawing.Size(394, 205);
+			this.PasswordResultTextBox.Size = new System.Drawing.Size(412, 205);
 			this.PasswordResultTextBox.TabIndex = 31;
 			// 
 			// IncludeSymbolsLabel
@@ -217,6 +218,7 @@
 			// IncludeSymbolsCheckbox
 			// 
 			this.IncludeSymbolsCheckbox.AutoSize = true;
+			this.IncludeSymbolsCheckbox.ForeColor = System.Drawing.Color.Black;
 			this.IncludeSymbolsCheckbox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
 			this.IncludeSymbolsCheckbox.Location = new System.Drawing.Point(309, 48);
 			this.IncludeSymbolsCheckbox.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);

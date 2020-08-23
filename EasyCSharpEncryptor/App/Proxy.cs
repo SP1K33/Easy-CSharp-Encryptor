@@ -10,15 +10,18 @@ namespace EasyCSharpEncryptor.App
 		public static DataContainer DataContainer;
 		public static MainForm MainForm;
 		public static PasswordGeneratorForm PasswordGeneratorForm;
+		public static EncryptionForm EncryptionForm;
 
 		public static void Init()
 		{
 			DataContainer = new DataContainer();
 			DataContainer.Init();
 
-			MainForm = new MainForm();
 			PasswordGeneratorForm = new PasswordGeneratorForm();
-			
+			EncryptionForm = new EncryptionForm();
+
+			MainForm = new MainForm();
+
 			PasswordGenerator = new PasswordGenerator();
 		}
 	}

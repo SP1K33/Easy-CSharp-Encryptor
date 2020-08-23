@@ -14,16 +14,20 @@ namespace EasyCSharpEncryptor.FormLayout
 
 		public void HideWarning()
 		{
-			this.WarningText.Visible = false;
+			WarningText.Visible = false;
 		}
 
 		private void MoveHighlight(Button button)
 		{
-			
 			SelectionHighlight.Location = new Point(button.Location.X, SelectionHighlight.Location.Y);
 		}
 
 		private void OnCloseButtonClicked(object sender, System.EventArgs e)
+		{
+			PlayCloseAnimation();
+		}
+
+		private void PlayCloseAnimation()
 		{
 			_animationState = AnimationState.Closing;
 			AnimationTimer.Start();

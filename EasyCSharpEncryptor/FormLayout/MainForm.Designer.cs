@@ -37,7 +37,6 @@ namespace EasyCSharpEncryptor.FormLayout
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.Title = new System.Windows.Forms.Label();
 			this.EncryptionButton = new System.Windows.Forms.Button();
-			this.DecryptionButton = new System.Windows.Forms.Button();
 			this.SelectionHighlight = new System.Windows.Forms.Panel();
 			this.PasswordGenerationButton = new System.Windows.Forms.Button();
 			this.CloseButton = new System.Windows.Forms.Button();
@@ -62,16 +61,6 @@ namespace EasyCSharpEncryptor.FormLayout
 			this.EncryptionButton.Name = "EncryptionButton";
 			this.EncryptionButton.UseVisualStyleBackColor = true;
 			this.EncryptionButton.Click += new System.EventHandler(this.OnEncryptionButtonClicked);
-			// 
-			// DecryptionButton
-			// 
-			this.DecryptionButton.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.DecryptionButton.FlatAppearance.BorderSize = 0;
-			resources.ApplyResources(this.DecryptionButton, "DecryptionButton");
-			this.DecryptionButton.ForeColor = System.Drawing.Color.White;
-			this.DecryptionButton.Name = "DecryptionButton";
-			this.DecryptionButton.UseVisualStyleBackColor = true;
-			this.DecryptionButton.Click += new System.EventHandler(this.OnDecryptionButtonClicked);
 			// 
 			// SelectionHighlight
 			// 
@@ -137,7 +126,6 @@ namespace EasyCSharpEncryptor.FormLayout
 			this.Controls.Add(this.WarningText);
 			this.Controls.Add(this.PasswordGenerationButton);
 			this.Controls.Add(this.SelectionHighlight);
-			this.Controls.Add(this.DecryptionButton);
 			this.Controls.Add(this.Title);
 			this.Controls.Add(this.EncryptionButton);
 			this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
@@ -152,7 +140,6 @@ namespace EasyCSharpEncryptor.FormLayout
 		#endregion
 		private System.Windows.Forms.Label Title;
 		private System.Windows.Forms.Button EncryptionButton;
-		private System.Windows.Forms.Button DecryptionButton;
 		private System.Windows.Forms.Panel SelectionHighlight;
 		private System.Windows.Forms.Button PasswordGenerationButton;
 		private System.Windows.Forms.Button CloseButton;

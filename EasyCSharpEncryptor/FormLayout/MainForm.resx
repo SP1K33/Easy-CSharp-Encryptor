@@ -151,7 +151,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Title.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="EncryptionButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -164,26 +164,43 @@
   </data>
   <data name="EncryptionButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wgAADsIBFShKgAAAAcJJREFUSEu1VLFOAkEUPNRQ2Bn9BVpD6Tf4CxRUlopnSCxIqGyIETkSA3L8g50h
-        F3ujJlLbECsatBASCxLReccId8tDOHJOMlmWNzNv925vrSiwHTdpVxoZjB7YP6k2v3067hDzZ7CQu6xv
-        UR4NCLKOK9e7CGlPgufS7dmOv5AE7csB5n1wEA77k19oUly6ER5PCqt7U4IWURplGDMfECYg9AyzyS40
-        eTAL3mI+CtR6C98RdrFnmEwOoUlTbuXK9TU2mmgwL7CsA4JS0GASDe4xUj2G7CikwaljSQdCWkGDSQS8
-        4tStU+4D/+VDOhxvlnRA1AkZFCL0TBrhtywqjbEbrAsZpwOCF9OgUXbERzc0a0LG6YD5RjNFITL6jNOB
-        1dmaMQrRxGPcLHActyF41IxRiIXqHyQa7KDBg2aKQmS0wSRjp4irATiQS5WxU+TKtVgeEe86uVSZTMTU
-        YIQMD+8hxdgp+JKfFNMMZSFy6jDK8ZbvqIN5C/MSRrnrZq/3hTtw3HfUO2M27mRBtC4PmBftoEjp6lBC
-        Tf5bk088pg+f1eYppavDCP/lweH51abw6KK2QenqUBoIsyzHA6VBzE0s6wcpXZgjrzvyiQAAAABJRU5E
-        rkJggg==
+        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
 </value>
   </data>
   <data name="EncryptionButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>261, 36</value>
+    <value>0, 36</value>
   </data>
   <data name="EncryptionButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="EncryptionButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 79</value>
+    <value>391, 79</value>
   </data>
   <data name="EncryptionButton.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -207,65 +224,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;EncryptionButton.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="DecryptionButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="DecryptionButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Century Gothic, 11.25pt</value>
-  </data>
-  <data name="DecryptionButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABkAAAAgCAYAAADnnNMGAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wgAADsIBFShKgAAAAldJREFUSEvNVkFr1EAY7RYVrBZUUDx79LSXetLj6tWDBy8q6EUotJvNtujVk0rr
-        TiZdN5sZChURFax40YtgQYUepP9BlFIRD/6A3fq+8Fknm0nMLBF88Mhm3/u+l0kyM5kowh39uOZL1WhJ
-        /QTcAXcNfgOf+lI3yMclbvBFfAQNnqPR0GhsJXyvWiI+xqXlsCD10VagNm0NC7hVOghm3KJkBKNNaETb
-        CN9KjvYRri+urE5yq3wshPoszAOzGKEbbanqi6HeTx460jm0d6YPHLRD3UgaFQHGFyOFm7e7q1Msp+AF
-        8UFcwMcR/0uQHRb4oj8Fww+jYLct9TmWrcCIzph+8KcvosMsZ+EHyS0wCtRX/Fd4j3ERk/B+SdUFcZ3l
-        LDAnLplmP9RvWCoEbtnrVJ3Ul1nKAk2vmGa8kmssFcITsTLrEHKVpSxINM1eJ+qyVIj5Bz1p1qHPNZay
-        uCWi6eb98PQe74oTLBUCvuNmXWtpZZqlP8BwT3mBEriKjapI/ajv74A6ZjEtdnvDrYyB+t4U/TomlHpv
-        NVRE9P9AMzy1hPwDDijEJlTK/y8E9/cTjhGOTntN6RA0fuSJ/gF6I5udaB/O12w+G8uGDOeWH6YWvfnl
-        Hi2mf92aiQ4hvRnunwAhM/T/iM/K8s8kUG+bnX6yT2CtOkTnVp+FTg8evEkhs/fkeYuWS9eQWQ65YNFy
-        OVbI3FL3okXLpWvIOj4eTuJ5PLNouXQNoRfAea1zDxmDE7iy9JdG1UR/2k9u4KTUpBqDQ+pPO2MNP64j
-        8bPFND7Rj/p6Iq79AhAjOT0hBzOwAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="DecryptionButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 36</value>
-  </data>
-  <data name="DecryptionButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 79</value>
-  </data>
-  <data name="DecryptionButton.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="DecryptionButton.Text" xml:space="preserve">
-    <value>Decryption</value>
-  </data>
-  <data name="DecryptionButton.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomCenter</value>
-  </data>
-  <data name="DecryptionButton.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageAboveText</value>
-  </data>
-  <data name="&gt;&gt;DecryptionButton.Name" xml:space="preserve">
-    <value>DecryptionButton</value>
-  </data>
-  <data name="&gt;&gt;DecryptionButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DecryptionButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;DecryptionButton.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="SelectionHighlight.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 117</value>
   </data>
   <data name="SelectionHighlight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 10</value>
+    <value>391, 10</value>
   </data>
   <data name="SelectionHighlight.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -306,10 +271,10 @@
 </value>
   </data>
   <data name="PasswordGenerationButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>522, 36</value>
+    <value>391, 36</value>
   </data>
   <data name="PasswordGenerationButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 79</value>
+    <value>391, 79</value>
   </data>
   <data name="PasswordGenerationButton.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -458,6 +423,9 @@
   <data name="GitHubButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
+  <data name="GitHubButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="GitHubButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>715, 5</value>
   </data>
@@ -481,6 +449,9 @@
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>87</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>783, 448</value>
