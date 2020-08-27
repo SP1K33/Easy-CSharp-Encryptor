@@ -7,6 +7,7 @@ namespace EasyCSharpEncryptor.App
 	public static class Proxy
 	{
 		public static PasswordGenerator PasswordGenerator;
+		public static Cryptor Cryptor;
 		public static DataContainer DataContainer;
 		public static MainForm MainForm;
 		public static PasswordGeneratorForm PasswordGeneratorForm;
@@ -23,6 +24,7 @@ namespace EasyCSharpEncryptor.App
 			MainForm = new MainForm();
 
 			PasswordGenerator = new PasswordGenerator();
+			Cryptor = new Cryptor();
 		}
 	}
 }

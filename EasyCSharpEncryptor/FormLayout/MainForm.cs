@@ -1,6 +1,7 @@
 ﻿using EasyCSharpEncryptor.App;
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace EasyCSharpEncryptor.FormLayout
@@ -18,8 +19,6 @@ namespace EasyCSharpEncryptor.FormLayout
 		private AnimationState _animationState;
 		private Form _currentChildForm;
 
-		public event Action DecryptionButtonClickEvent;
-
 		private void Init()
 		{
 			MouseDown += OnMousePressed;
@@ -28,12 +27,6 @@ namespace EasyCSharpEncryptor.FormLayout
 			ChildFormContainerPanel.MouseDown += OnMousePressed;
 			OpenChildForm(Proxy.EncryptionForm);
 			PlayOpenAnimation();
-		}
-
-		private void OnDecryptionButtonClicked(object sender, EventArgs e)
-		{
-			MoveHighlight((Button)sender);
-			DecryptionButtonClickEvent?.Invoke();
 		}
 
 		private void OnEncryptionButtonClicked(object sender, EventArgs e)
@@ -93,6 +86,47 @@ namespace EasyCSharpEncryptor.FormLayout
 		{
 			const string link = "https://github.com/SP1K33/Easy-CSharp-Encryptor";
 			Process.Start(link);
+		}
+
+		public void ShowWarning(string text)
+		{
+			WarningText.Visible = true;
+			WarningText.Text = text;
+		}
+
+		public void HideWarning()
+		{
+			WarningText.Visible = false;
+		}
+
+		private void MoveHighlight(Button button)
+		{
+			SelectionHighlight.Location = new Point(button.Location.X, SelectionHighlight.Location.Y);
+		}
+
+		private void OnCloseButtonClicked(object sender, EventArgs e)
+		{
+			PlayCloseAnimation();
+		}
+
+		private void PlayCloseAnimation()
+		{
+			_animationState = AnimationState.Closing;
+			AnimationTimer.Start();
+		}
+
+		[System.Runtime.InteropServices.DllImport("user32.dll")]
+		private static extern int SendMessage(IntPtr hWnd, int msg, int wParam, int lParam);
+		[System.Runtime.InteropServices.DllImport("user32.dll")]
+		private static extern bool ReleaseCapture();
+
+		private void OnMousePressed(object sender, MouseEventArgs e)
+		{
+			if (e.Button == MouseButtons.Left)
+			{
+				ReleaseCapture();
+				SendMessage(Handle, 0xA1, 0x2, 0);
+			}
 		}
 	}
 }

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyCSharpEncryptor.FormLayout
@@ -15,9 +8,47 @@ namespace EasyCSharpEncryptor.FormLayout
 		public EncryptionForm()
 		{
 			InitializeComponent();
+			Mode = CryptMode.Encryption;
+			SwitchMode.Text = Enum.GetName(typeof(CryptMode), (int)Mode);
 		}
 
-		private void OnClearPasswordButtonClicked(object sender, EventArgs e)
+		public Action OnCryptButtonClick;
+
+		public enum CryptMode
+		{
+			Encryption, 
+			Decryption
+		}
+
+		public CryptMode Mode { get; private set; }
+
+		private void OnCryptButtonClicked(object sender, EventArgs e)
+		{
+			OnCryptButtonClick?.Invoke();
+		}
+
+		public void SetResultText(string text)
+		{
+			ResultTextBox.Text = text;
+		}
+
+		public string GetSource()
+		{
+			return SourceTextBox.Text;
+		}
+
+		public string GetPassword()
+		{
+			return PasswordTextBox.Text;
+		}
+
+		private void OnSwitchModeClicked(object sender, EventArgs e)
+		{
+			Mode = Mode == CryptMode.Encryption ? CryptMode.Decryption : CryptMode.Encryption;
+			SwitchMode.Text = Enum.GetName(typeof(CryptMode), (int)Mode);
+		}
+
+		private void OnClearPasswordClicked(object sender, EventArgs e)
 		{
 			PasswordTextBox.Text = string.Empty;
 		}
