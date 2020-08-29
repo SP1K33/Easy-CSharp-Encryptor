@@ -12,7 +12,7 @@ namespace EasyCSharpEncryptor.FormLayout
 			SwitchMode.Text = Enum.GetName(typeof(CryptMode), (int)Mode);
 		}
 
-		public Action OnCryptButtonClick;
+		public Action CryptButtonClickEvent;
 
 		public enum CryptMode
 		{
@@ -24,7 +24,7 @@ namespace EasyCSharpEncryptor.FormLayout
 
 		private void OnCryptButtonClicked(object sender, EventArgs e)
 		{
-			OnCryptButtonClick?.Invoke();
+			CryptButtonClickEvent?.Invoke();
 		}
 
 		public void SetResultText(string text)

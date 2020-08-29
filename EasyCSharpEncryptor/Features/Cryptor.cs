@@ -10,12 +10,12 @@ namespace EasyCSharpEncryptor.Features
 	{
 		public Cryptor()
 		{
-			Proxy.EncryptionForm.OnCryptButtonClick += OnButtonClicked;
+			Proxy.EncryptionForm.CryptButtonClickEvent += OnCryptButtonClicked;
 		}
 
 		~Cryptor()
 		{
-			Proxy.EncryptionForm.OnCryptButtonClick -= OnButtonClicked;
+			Proxy.EncryptionForm.CryptButtonClickEvent -= OnCryptButtonClicked;
 		}
 
 		private RijndaelManaged MakeAesEncryption()
@@ -66,8 +66,14 @@ namespace EasyCSharpEncryptor.Features
 			return result;
 		}
 
-		private void OnButtonClicked()
+		private void OnCryptButtonClicked()
 		{
+			if (string.IsNullOrEmpty(Proxy.EncryptionForm.GetPassword()) ||
+			    string.IsNullOrEmpty(Proxy.EncryptionForm.GetSource()))
+			{
+				return;
+			}
+
 			var aes = MakeAesEncryption();
 			string source = Proxy.EncryptionForm.GetSource();
 
