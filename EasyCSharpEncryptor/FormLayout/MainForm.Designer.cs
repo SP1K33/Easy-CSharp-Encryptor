@@ -15,7 +15,7 @@ namespace EasyCSharpEncryptor.FormLayout
 		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
 		protected override void Dispose(bool disposing)
 		{
-			Proxy.DataContainer.SaveData();
+			Proxy.DataContainer.SerializeData();
 
 			if (disposing && (components != null))
 			{

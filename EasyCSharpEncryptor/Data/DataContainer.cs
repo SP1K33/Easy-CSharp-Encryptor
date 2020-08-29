@@ -36,7 +36,7 @@ namespace EasyCSharpEncryptor.Data
 			_cachedData[typeof(T)] = data;
 		}
 
-		public void SaveData()
+		public void SerializeData()
 		{
 			foreach (var dataPair in _cachedData)
 			{
@@ -99,7 +99,7 @@ namespace EasyCSharpEncryptor.Data
 		}
 
 		private void GetTypes(ref Dictionary<Type, string> availableTypes,
-			ref Dictionary<Type, string> invalidTypes)
+							  ref Dictionary<Type, string> invalidTypes)
 		{
 			foreach (var pair in _dataTypes)
 			{
