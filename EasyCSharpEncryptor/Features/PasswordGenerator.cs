@@ -1,10 +1,9 @@
-﻿using EasyCSharpEncryptor.Data;
+﻿using EasyCSharpEncryptor.App;
+using EasyCSharpEncryptor.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Security.Cryptography;
-using EasyCSharpEncryptor.App;
 
 namespace EasyCSharpEncryptor.Features
 {
@@ -12,12 +11,14 @@ namespace EasyCSharpEncryptor.Features
 	{
 		public PasswordGenerator()
 		{
-			Proxy.PasswordGeneratorForm.GeneratePasswordButtonClickEvent += OnButtonPressed;
+			Proxy.PasswordGeneratorForm.GeneratePasswordButtonClickEvent += OnPasswordGeneratorFormButtonClicked;
+			Proxy.EncryptionForm.GeneratePasswordButtonClickEvent += OnEncryptionFormButtonClicked;
 		}
 
 		~PasswordGenerator()
 		{
-			Proxy.PasswordGeneratorForm.GeneratePasswordButtonClickEvent -= OnButtonPressed;
+			Proxy.PasswordGeneratorForm.GeneratePasswordButtonClickEvent -= OnPasswordGeneratorFormButtonClicked;
+			Proxy.EncryptionForm.GeneratePasswordButtonClickEvent -= OnEncryptionFormButtonClicked;
 		}
 
 		private const string _symbols = "!'#$%&()+,-.:@[]_`~{}";
@@ -28,7 +29,22 @@ namespace EasyCSharpEncryptor.Features
 
 		private readonly RNGCryptoServiceProvider _rng = new RNGCryptoServiceProvider();
 
-		private void OnButtonPressed()
+		private void OnEncryptionFormButtonClicked()
+		{
+			var password = Next();
+			if (!string.IsNullOrEmpty(password))
+			{
+				Proxy.EncryptionForm.SetPasswordText(password);
+				Proxy.MainForm.HideWarning();
+			}
+			else
+			{
+				const string warning = "Password generation error";
+				Proxy.MainForm.ShowTip(warning);
+			}
+		}
+
+		private void OnPasswordGeneratorFormButtonClicked()
 		{
 			var password = Next();
 			if (!string.IsNullOrEmpty(password))
@@ -39,7 +55,7 @@ namespace EasyCSharpEncryptor.Features
 			else
 			{
 				const string warning = "Select at least one of the options";
-				Proxy.MainForm.ShowWarning(warning);
+				Proxy.MainForm.ShowTip(warning);
 			}
 		}
 
@@ -108,11 +124,6 @@ namespace EasyCSharpEncryptor.Features
 
 		private int GetRandomInRange(int min, int max)
 		{
-			if (min > max)
-			{
-				throw new ArgumentOutOfRangeException();
-			}
-
 			var data = new byte[sizeof(int)];
 			_rng.GetBytes(data);
 			var randomNumber = BitConverter.ToInt32(data, 0);

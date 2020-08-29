@@ -12,7 +12,9 @@ namespace EasyCSharpEncryptor.FormLayout
 			SwitchMode.Text = Enum.GetName(typeof(CryptMode), (int)Mode);
 		}
 
-		public Action CryptButtonClickEvent;
+		public event Action CryptButtonClickEvent;
+		public event Action GeneratePasswordButtonClickEvent;
+		public event Action GenerateSaltButtonClickEvent;
 
 		public enum CryptMode
 		{
@@ -32,9 +34,24 @@ namespace EasyCSharpEncryptor.FormLayout
 			ResultTextBox.Text = text;
 		}
 
+		public void SetPasswordText(string text)
+		{
+			PasswordTextBox.Text = text;
+		}
+
+		public void SetSaltText(string text)
+		{
+			SaltTextBox.Text = text;
+		}
+
 		public string GetSource()
 		{
 			return SourceTextBox.Text;
+		}
+
+		public string GetSaltText()
+		{
+			return SaltTextBox.Text;
 		}
 
 		public string GetPassword()
@@ -51,6 +68,21 @@ namespace EasyCSharpEncryptor.FormLayout
 		private void OnClearPasswordClicked(object sender, EventArgs e)
 		{
 			PasswordTextBox.Text = string.Empty;
+		}
+
+		private void OnGeneratePasswordButtonClicked(object sender, EventArgs e)
+		{
+			GeneratePasswordButtonClickEvent?.Invoke();
+		}
+
+		private void OnGenerateSaltButtonClicked(object sender, EventArgs e)
+		{
+			GenerateSaltButtonClickEvent?.Invoke();
+		}
+
+		private void OnClearSaltButtonClicked(object sender, EventArgs e)
+		{
+			SaltTextBox.Text = string.Empty;
 		}
 	}
 }

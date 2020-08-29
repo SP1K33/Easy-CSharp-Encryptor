@@ -38,6 +38,11 @@
 			this.PasswordLabel = new System.Windows.Forms.Label();
 			this.PasswordTextBox = new System.Windows.Forms.TextBox();
 			this.SwitchMode = new System.Windows.Forms.Button();
+			this.SaltTextBox = new System.Windows.Forms.TextBox();
+			this.ClearSaltButton = new System.Windows.Forms.Button();
+			this.SaltLabel = new System.Windows.Forms.Label();
+			this.GeneratePasswordButton = new System.Windows.Forms.Button();
+			this.GenerateSaltButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// CryptButton
@@ -46,9 +51,9 @@
 			this.CryptButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.CryptButton.Font = new System.Drawing.Font("Century Gothic", 12F);
 			this.CryptButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-			this.CryptButton.Location = new System.Drawing.Point(380, 110);
+			this.CryptButton.Location = new System.Drawing.Point(374, 140);
 			this.CryptButton.Name = "CryptButton";
-			this.CryptButton.Size = new System.Drawing.Size(26, 155);
+			this.CryptButton.Size = new System.Drawing.Size(26, 123);
 			this.CryptButton.TabIndex = 26;
 			this.CryptButton.Text = "→";
 			this.CryptButton.UseVisualStyleBackColor = true;
@@ -58,32 +63,32 @@
 			// 
 			this.ResultTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
 			this.ResultTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-			this.ResultTextBox.Location = new System.Drawing.Point(415, 110);
+			this.ResultTextBox.Location = new System.Drawing.Point(409, 140);
 			this.ResultTextBox.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-			this.ResultTextBox.MinimumSize = new System.Drawing.Size(358, 155);
+			this.ResultTextBox.MinimumSize = new System.Drawing.Size(358, 123);
 			this.ResultTextBox.Multiline = true;
 			this.ResultTextBox.Name = "ResultTextBox";
 			this.ResultTextBox.ReadOnly = true;
-			this.ResultTextBox.Size = new System.Drawing.Size(358, 155);
+			this.ResultTextBox.Size = new System.Drawing.Size(358, 123);
 			this.ResultTextBox.TabIndex = 32;
 			// 
 			// SourceTextBox
 			// 
 			this.SourceTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
 			this.SourceTextBox.ForeColor = System.Drawing.Color.Green;
-			this.SourceTextBox.Location = new System.Drawing.Point(14, 110);
+			this.SourceTextBox.Location = new System.Drawing.Point(8, 140);
 			this.SourceTextBox.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-			this.SourceTextBox.MinimumSize = new System.Drawing.Size(358, 155);
+			this.SourceTextBox.MinimumSize = new System.Drawing.Size(358, 123);
 			this.SourceTextBox.Multiline = true;
 			this.SourceTextBox.Name = "SourceTextBox";
-			this.SourceTextBox.Size = new System.Drawing.Size(358, 155);
+			this.SourceTextBox.Size = new System.Drawing.Size(358, 123);
 			this.SourceTextBox.TabIndex = 33;
 			// 
 			// SourceLabel
 			// 
 			this.SourceLabel.AutoSize = true;
 			this.SourceLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-			this.SourceLabel.Location = new System.Drawing.Point(155, 85);
+			this.SourceLabel.Location = new System.Drawing.Point(149, 115);
 			this.SourceLabel.Name = "SourceLabel";
 			this.SourceLabel.Size = new System.Drawing.Size(67, 21);
 			this.SourceLabel.TabIndex = 34;
@@ -93,7 +98,7 @@
 			// 
 			this.ResultLabel.AutoSize = true;
 			this.ResultLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-			this.ResultLabel.Location = new System.Drawing.Point(562, 85);
+			this.ResultLabel.Location = new System.Drawing.Point(556, 115);
 			this.ResultLabel.Name = "ResultLabel";
 			this.ResultLabel.Size = new System.Drawing.Size(60, 21);
 			this.ResultLabel.TabIndex = 35;
@@ -133,7 +138,7 @@
 			this.PasswordTextBox.Location = new System.Drawing.Point(108, 12);
 			this.PasswordTextBox.MinimumSize = new System.Drawing.Size(579, 27);
 			this.PasswordTextBox.Name = "PasswordTextBox";
-			this.PasswordTextBox.Size = new System.Drawing.Size(631, 27);
+			this.PasswordTextBox.Size = new System.Drawing.Size(596, 27);
 			this.PasswordTextBox.TabIndex = 36;
 			// 
 			// SwitchMode
@@ -144,7 +149,7 @@
 			this.SwitchMode.Font = new System.Drawing.Font("Century Gothic", 12F);
 			this.SwitchMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
 			this.SwitchMode.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.SwitchMode.Location = new System.Drawing.Point(14, 48);
+			this.SwitchMode.Location = new System.Drawing.Point(8, 83);
 			this.SwitchMode.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
 			this.SwitchMode.Name = "SwitchMode";
 			this.SwitchMode.Size = new System.Drawing.Size(759, 32);
@@ -153,12 +158,82 @@
 			this.SwitchMode.UseVisualStyleBackColor = true;
 			this.SwitchMode.Click += new System.EventHandler(this.OnSwitchModeClicked);
 			// 
+			// SaltTextBox
+			// 
+			this.SaltTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+			this.SaltTextBox.ForeColor = System.Drawing.Color.Green;
+			this.SaltTextBox.Location = new System.Drawing.Point(108, 45);
+			this.SaltTextBox.MinimumSize = new System.Drawing.Size(579, 27);
+			this.SaltTextBox.Name = "SaltTextBox";
+			this.SaltTextBox.Size = new System.Drawing.Size(596, 27);
+			this.SaltTextBox.TabIndex = 40;
+			// 
+			// ClearSaltButton
+			// 
+			this.ClearSaltButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ClearSaltButton.BackgroundImage")));
+			this.ClearSaltButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.ClearSaltButton.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.ClearSaltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.ClearSaltButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+			this.ClearSaltButton.Location = new System.Drawing.Point(745, 45);
+			this.ClearSaltButton.Name = "ClearSaltButton";
+			this.ClearSaltButton.Size = new System.Drawing.Size(29, 29);
+			this.ClearSaltButton.TabIndex = 41;
+			this.ClearSaltButton.UseVisualStyleBackColor = true;
+			this.ClearSaltButton.Click += new System.EventHandler(this.OnClearSaltButtonClicked);
+			// 
+			// SaltLabel
+			// 
+			this.SaltLabel.AutoSize = true;
+			this.SaltLabel.Font = new System.Drawing.Font("Century Gothic", 12F);
+			this.SaltLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+			this.SaltLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.SaltLabel.Location = new System.Drawing.Point(13, 48);
+			this.SaltLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+			this.SaltLabel.Name = "SaltLabel";
+			this.SaltLabel.Size = new System.Drawing.Size(43, 21);
+			this.SaltLabel.TabIndex = 42;
+			this.SaltLabel.Text = "Salt:";
+			// 
+			// GeneratePasswordButton
+			// 
+			this.GeneratePasswordButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GeneratePasswordButton.BackgroundImage")));
+			this.GeneratePasswordButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.GeneratePasswordButton.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.GeneratePasswordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.GeneratePasswordButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+			this.GeneratePasswordButton.Location = new System.Drawing.Point(710, 10);
+			this.GeneratePasswordButton.Name = "GeneratePasswordButton";
+			this.GeneratePasswordButton.Size = new System.Drawing.Size(29, 29);
+			this.GeneratePasswordButton.TabIndex = 43;
+			this.GeneratePasswordButton.UseVisualStyleBackColor = true;
+			this.GeneratePasswordButton.Click += new System.EventHandler(this.OnGeneratePasswordButtonClicked);
+			// 
+			// GenerateSaltButton
+			// 
+			this.GenerateSaltButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GenerateSaltButton.BackgroundImage")));
+			this.GenerateSaltButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+			this.GenerateSaltButton.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.GenerateSaltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.GenerateSaltButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+			this.GenerateSaltButton.Location = new System.Drawing.Point(710, 45);
+			this.GenerateSaltButton.Name = "GenerateSaltButton";
+			this.GenerateSaltButton.Size = new System.Drawing.Size(29, 29);
+			this.GenerateSaltButton.TabIndex = 44;
+			this.GenerateSaltButton.UseVisualStyleBackColor = true;
+			this.GenerateSaltButton.Click += new System.EventHandler(this.OnGenerateSaltButtonClicked);
+			// 
 			// EncryptionForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
 			this.ClientSize = new System.Drawing.Size(782, 272);
+			this.Controls.Add(this.GenerateSaltButton);
+			this.Controls.Add(this.GeneratePasswordButton);
+			this.Controls.Add(this.SaltLabel);
+			this.Controls.Add(this.ClearSaltButton);
+			this.Controls.Add(this.SaltTextBox);
 			this.Controls.Add(this.SwitchMode);
 			this.Controls.Add(this.ClearPasswordButton);
 			this.Controls.Add(this.PasswordLabel);
@@ -188,5 +263,10 @@
 		private System.Windows.Forms.Label PasswordLabel;
 		private System.Windows.Forms.TextBox PasswordTextBox;
 		private System.Windows.Forms.Button SwitchMode;
+		private System.Windows.Forms.TextBox SaltTextBox;
+		private System.Windows.Forms.Button ClearSaltButton;
+		private System.Windows.Forms.Label SaltLabel;
+		private System.Windows.Forms.Button GeneratePasswordButton;
+		private System.Windows.Forms.Button GenerateSaltButton;
 	}
 }
