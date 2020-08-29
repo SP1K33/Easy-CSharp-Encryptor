@@ -1,10 +1,8 @@
-﻿using System;
+﻿using EasyCSharpEncryptor.App;
+using System;
 using System.Drawing;
 using System.IO;
-using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms;
-using EasyCSharpEncryptor.App;
-using EasyCSharpEncryptor.Features;
 
 namespace EasyCSharpEncryptor.FormLayout
 {
@@ -21,7 +19,6 @@ namespace EasyCSharpEncryptor.FormLayout
 		private const string _removeStorageDefaultName = "Remove storage";
 		private const string _removeStorageClickName = "Are you sure?";
 		private int _removeStorageClickCount;
-		private object _lastListBoxItem;
 
 		public override void Init()
 		{
@@ -38,25 +35,32 @@ namespace EasyCSharpEncryptor.FormLayout
 
 		protected override void OnDisable() { }
 
-
 		private void HideStorageLayout()
 		{
 			StorageListBox.Visible = false;
 			OpenStorageButton.Visible = false;
+			CreateStorageButton.Size = new Size(StorageListBox.Size.Width, CreateStorageButton.Size.Height);
 			CreateStorageButton.Location = new Point(StorageListBox.Location.X,
 				StorageListBox.Location.Y - StoragesTitle.Height + 10);
 			RemoveStorageButton.Visible = false;
 			StoragesTitle.Visible = false;
+			MasterKeyTextBox.Visible = false;
+			ClearMasterKeyButton.Visible = false;
+			MasterKeyLabel.Visible = false;
 		}
 
 		private void ShowStorageLayout()
 		{
 			StorageListBox.Visible = true;
 			OpenStorageButton.Visible = true;
-			CreateStorageButton.Location = new Point(OpenStorageButton.Location.X,
-				OpenStorageButton.Location.Y + OpenStorageButton.Height + 8);
+			CreateStorageButton.Size = RemoveStorageButton.Size;
+			CreateStorageButton.Location = new Point(OpenStorageButton.Location.X + OpenStorageButton.Width + 20,
+				OpenStorageButton.Location.Y);
 			RemoveStorageButton.Visible = true;
 			StoragesTitle.Visible = true;
+			MasterKeyTextBox.Visible = true;
+			ClearMasterKeyButton.Visible = true;
+			MasterKeyLabel.Visible = true;
 		}
 
 		private void UpdateStorageListBox()
@@ -90,12 +94,15 @@ namespace EasyCSharpEncryptor.FormLayout
 			{
 				Proxy.MainForm.ShowTip("No storage selected");
 			}
+			else if (string.IsNullOrEmpty(MasterKeyTextBox.Text))
+			{
+				Proxy.MainForm.ShowTip("Master key is empty");
+			}
 			else
 			{
 				Proxy.MainForm.OpenChildForm(Proxy.StorageViewForm);
 			}
 		}
-
 
 		private void OnRemoveStorageButtonClicked(object sender, EventArgs e)
 		{
@@ -120,9 +127,9 @@ namespace EasyCSharpEncryptor.FormLayout
 			}
 		}
 
-		private void OnStorageListBoxSelectedIndexChanged(object sender, EventArgs e)
+		private void OnClearMasterKeyButtonClicked(object sender, EventArgs e)
 		{
-			_lastListBoxItem = StorageListBox.SelectedItem;
+			MasterKeyTextBox.Text = string.Empty;
 		}
 	}
 }
