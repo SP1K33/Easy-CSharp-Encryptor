@@ -60,7 +60,7 @@ namespace EasyCSharpEncryptor.FormLayout
 		{
 			var box = sender as TextBox;
 			var data = Proxy.DataContainer.GetData<PasswordGenerationData>();
-			data.Length = int.Parse(box.Text);
+			data.Length = !string.IsNullOrEmpty(box.Text) ? int.Parse(box.Text) : 0;
 			Proxy.DataContainer.SaveData(data);
 		}
 
