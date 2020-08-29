@@ -44,6 +44,7 @@ namespace EasyCSharpEncryptor.FormLayout
 			this.AnimationTimer = new System.Windows.Forms.Timer(this.components);
 			this.ChildFormContainerPanel = new System.Windows.Forms.Panel();
 			this.GitHubButton = new System.Windows.Forms.Button();
+			this.StorageButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// Title
@@ -115,19 +116,30 @@ namespace EasyCSharpEncryptor.FormLayout
 			this.GitHubButton.UseVisualStyleBackColor = true;
 			this.GitHubButton.Click += new System.EventHandler(this.OnGitHubButtonClicked);
 			// 
+			// StorageButton
+			// 
+			resources.ApplyResources(this.StorageButton, "StorageButton");
+			this.StorageButton.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.StorageButton.FlatAppearance.BorderSize = 0;
+			this.StorageButton.ForeColor = System.Drawing.Color.White;
+			this.StorageButton.Name = "StorageButton";
+			this.StorageButton.UseVisualStyleBackColor = true;
+			this.StorageButton.Click += new System.EventHandler(this.OnStorageButtonClicked);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
 			resources.ApplyResources(this, "$this");
+			this.Controls.Add(this.EncryptionButton);
+			this.Controls.Add(this.PasswordGenerationButton);
+			this.Controls.Add(this.StorageButton);
 			this.Controls.Add(this.GitHubButton);
+			this.Controls.Add(this.SelectionHighlight);
 			this.Controls.Add(this.CloseButton);
 			this.Controls.Add(this.ChildFormContainerPanel);
 			this.Controls.Add(this.WarningText);
-			this.Controls.Add(this.PasswordGenerationButton);
-			this.Controls.Add(this.SelectionHighlight);
 			this.Controls.Add(this.Title);
-			this.Controls.Add(this.EncryptionButton);
 			this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.MaximizeBox = false;
@@ -147,6 +159,7 @@ namespace EasyCSharpEncryptor.FormLayout
 		private System.Windows.Forms.Timer AnimationTimer;
 		private System.Windows.Forms.Panel ChildFormContainerPanel;
 		private System.Windows.Forms.Button GitHubButton;
+		private System.Windows.Forms.Button StorageButton;
 	}
 }
 

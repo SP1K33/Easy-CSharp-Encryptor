@@ -3,30 +3,41 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
+using EasyCSharpEncryptor.Features;
 
 namespace EasyCSharpEncryptor.FormLayout
 {
-	public partial class MainForm : Form
+	public partial class MainForm : ControllableFormBase
 	{
 		public MainForm()
 		{
 			InitializeComponent();
-
-			Init();
 		}
 
 		private enum AnimationState { Opening, Closing }
 		private AnimationState _animationState;
 		private Form _currentChildForm;
 
-		private void Init()
+		public override void Init()
+		{
+			base.Init();
+			OpenChildForm(Proxy.StorageEntryForm);
+			PlayOpenAnimation();
+		}
+
+		protected override void OnEnable()
 		{
 			MouseDown += OnMousePressed;
 			WarningText.Visible = false;
 			Title.MouseDown += OnMousePressed;
 			ChildFormContainerPanel.MouseDown += OnMousePressed;
-			OpenChildForm(Proxy.EncryptionForm);
-			PlayOpenAnimation();
+		}
+
+		protected override void OnDisable()
+		{
+			MouseDown -= OnMousePressed;
+			Title.MouseDown -= OnMousePressed;
+			ChildFormContainerPanel.MouseDown -= OnMousePressed;
 		}
 
 		private void OnEncryptionButtonClicked(object sender, EventArgs e)
@@ -41,12 +52,20 @@ namespace EasyCSharpEncryptor.FormLayout
 			OpenChildForm(Proxy.PasswordGeneratorForm);
 		}
 
-		private void OpenChildForm(Form child)
+		private void OnStorageButtonClicked(object sender, EventArgs e)
+		{
+			MoveHighlight((Button)sender);
+			OpenChildForm(Proxy.StorageEntryForm);
+		}
+
+		public void OpenChildForm(Form child)
 		{
 			if (_currentChildForm == child)
 			{
 				return;
 			}
+
+			Proxy.MainForm.HideTip();
 			_currentChildForm?.Hide();
 			_currentChildForm = child;
 			_currentChildForm.TopLevel = false;
@@ -88,13 +107,13 @@ namespace EasyCSharpEncryptor.FormLayout
 			Process.Start(link);
 		}
 
-		public void ShowWarning(string text)
+		public void ShowTip(string text)
 		{
 			WarningText.Visible = true;
 			WarningText.Text = text;
 		}
 
-		public void HideWarning()
+		public void HideTip()
 		{
 			WarningText.Visible = false;
 		}

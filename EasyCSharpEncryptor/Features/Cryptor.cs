@@ -1,5 +1,5 @@
 ﻿using EasyCSharpEncryptor.App;
-using EasyCSharpEncryptor.FormLayout;
+using EasyCSharpEncryptor.Responses;
 using System;
 using System.Security.Cryptography;
 using System.Text;
@@ -8,19 +8,40 @@ namespace EasyCSharpEncryptor.Features
 {
 	public class Cryptor
 	{
-		public Cryptor()
+		~Cryptor()
+		{
+			Proxy.EncryptionForm.CryptButtonClickEvent -= OnCryptButtonClicked;
+			Proxy.EncryptionForm.GenerateSaltButtonClickEvent -= OnGenerateSaltButtonClicked;
+		}
+
+		public struct EncryptionInputData
+		{
+			public string Salt;
+			public string Password;
+			public string Source;
+			public EncryptionMode Mode;
+		}
+
+		private readonly Random _random = new Random();
+		private const short _minSaltLength = 0x08;
+		private const short _maxSaltLength = 0x20;
+		private EncryptionInputData _currentInputData;
+		private byte[] _saltBytes;
+
+		public event Action<string> SaltGenerateEvent;
+		public event Action<string, EncryptionResponse> EncryptionCompleteEvent;
+
+		public void Init()
 		{
 			Proxy.EncryptionForm.CryptButtonClickEvent += OnCryptButtonClicked;
 			Proxy.EncryptionForm.GenerateSaltButtonClickEvent += OnGenerateSaltButtonClicked;
 		}
 
-		~Cryptor()
+		public string GetMasterSalt()
 		{
-			Proxy.EncryptionForm.CryptButtonClickEvent -= OnCryptButtonClicked;
-			Proxy.EncryptionForm.GenerateSaltButtonClickEvent += OnGenerateSaltButtonClicked;
+			var saltBytes = new byte[] { 0x0, 0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0xF1, 0xF0, 0xEE, 0x21, 0x22, 0x45 };
+			return BitConverter.ToString(saltBytes);
 		}
-
-		private byte[] _salt;
 
 		private RijndaelManaged MakeAesEncryption()
 		{
@@ -36,8 +57,7 @@ namespace EasyCSharpEncryptor.Features
 
 		private byte[] GenerateSalt()
 		{
-			const int saltLengthLimit = 0x20;
-			var salt = new byte[saltLengthLimit];
+			var salt = new byte[_random.Next(_minSaltLength, _maxSaltLength)];
 			using (var cryptoServiceProvider = new RNGCryptoServiceProvider())
 			{
 				cryptoServiceProvider.GetNonZeroBytes(salt);
@@ -49,91 +69,121 @@ namespace EasyCSharpEncryptor.Features
 		private string GeneratePasswordKey()
 		{
 			int passwordIterations = 0x3E8;
-			string password = Proxy.EncryptionForm.GetPassword();
-			var deriveBytes = new Rfc2898DeriveBytes(password, _salt, passwordIterations, HashAlgorithmName.SHA256);
+			var deriveBytes = new Rfc2898DeriveBytes(_currentInputData.Password, _saltBytes, passwordIterations, HashAlgorithmName.SHA256);
 			var key = deriveBytes.GetBytes(0x100 / 0xB);
 			return Convert.ToBase64String(key);
 		}
 
-		private string Encrypt(SymmetricAlgorithm aesEncryption, string source)
+		private string Encrypt(SymmetricAlgorithm aesEncryption)
 		{
-			var sourceBytes = Encoding.UTF8.GetBytes(source);
+			var sourceBytes = Encoding.UTF8.GetBytes(_currentInputData.Source);
 			var cryptoTransform = aesEncryption.CreateEncryptor();
 			var cipherText = cryptoTransform.TransformFinalBlock(sourceBytes, 0, sourceBytes.Length);
 			return Convert.ToBase64String(cipherText);
 		}
 
-		private string Decrypt(SymmetricAlgorithm aesEncryption, string encryptedText)
+		private string Decrypt(SymmetricAlgorithm aesEncryption)
 		{
 			var cryptoTransform = aesEncryption.CreateDecryptor();
 			string result = string.Empty;
 
 			try
 			{
-				var encryptedBytes = Convert.FromBase64CharArray(encryptedText.ToCharArray(), 0, encryptedText.Length);
+				var encryptedBytes = Convert.FromBase64CharArray(_currentInputData.Source.ToCharArray(),
+					0, _currentInputData.Source.Length);
 				result = Encoding.UTF8.GetString(
 					cryptoTransform.TransformFinalBlock(encryptedBytes, 0, encryptedBytes.Length));
 			}
-			catch
-			{
-				Proxy.MainForm.ShowTip("Incorrect password or source text");
-			}
+			catch { }
 
 			return result;
 		}
 
-		private bool CheckFieldsCorrectness()
+		private EncryptionResponse ValidateInputData()
 		{
-			if (string.IsNullOrEmpty(Proxy.EncryptionForm.GetPassword()))
+			if (string.IsNullOrEmpty(_currentInputData.Password))
 			{
-				Proxy.MainForm.ShowTip("Password is empty");
-				return false;
+				return EncryptionResponse.PasswordIsEmpty;
 			}
 
-			if (string.IsNullOrEmpty(Proxy.EncryptionForm.GetSource()))
+			if (string.IsNullOrEmpty(_currentInputData.Source))
 			{
-				Proxy.MainForm.ShowTip("Source is empty");
-				return false;
+				return EncryptionResponse.SourceIsEmpty;
 			}
 
-			if (string.IsNullOrEmpty(Proxy.EncryptionForm.GetSaltText()))
+			if (string.IsNullOrEmpty(_currentInputData.Salt))
 			{
-				Proxy.MainForm.ShowTip("Salt is empty");
-				return false;
+				return EncryptionResponse.SaltIsEmpty;
 			}
 
 			try
 			{
-				_salt = FromStringToByteArray(Proxy.EncryptionForm.GetSaltText());
+				_saltBytes = FromStringToByteArray(_currentInputData.Salt);
 			}
 			catch
 			{
-				Proxy.MainForm.ShowTip("Salt is incorrect");
-				return false;
+				return EncryptionResponse.SaltIsIncorrect;
 			}
 
-			return true;
+			if (_saltBytes.Length < _minSaltLength)
+			{
+				return EncryptionResponse.SaltIsLessThan8Bytes;
+			}
+
+			if (_saltBytes.Length > _maxSaltLength)
+			{
+				return EncryptionResponse.SaltIsMoreThan32Bytes;
+			}
+
+			return EncryptionResponse.Success;
 		}
 
-		private void OnCryptButtonClicked()
+		public void Perform(EncryptionInputData data)
 		{
-			if (!CheckFieldsCorrectness())
+			_currentInputData = data;
+
+			var response = ValidateInputData();
+
+			if (response != EncryptionResponse.Success)
 			{
+				EncryptionCompleteEvent?.Invoke(string.Empty, response);
 				return;
 			}
 
-			var aes = MakeAesEncryption();
-			string source = Proxy.EncryptionForm.GetSource();
+			var result = GetEncryptionResult();
 
-			var result = Proxy.EncryptionForm.Mode == EncryptionForm.CryptMode.Encryption
-				? Encrypt(aes, source)
-				: Decrypt(aes, source);
-
-			if (!string.IsNullOrEmpty(result))
+			if (string.IsNullOrEmpty(result) && _currentInputData.Mode == EncryptionMode.Decryption)
 			{
-				Proxy.MainForm.HideWarning();
-				Proxy.EncryptionForm.SetResultText(result);
+				response = EncryptionResponse.DecryptionFail;
 			}
+
+			EncryptionCompleteEvent?.Invoke(result, response);
+		}
+
+		private void OnCryptButtonClicked(EncryptionInputData data)
+		{
+			Perform(data);
+		}
+
+		private string GetEncryptionResult()
+		{
+			return _currentInputData.Mode == EncryptionMode.Encryption
+				? PerformEncryption(_currentInputData)
+				: PerformDecryption(_currentInputData);
+		}
+
+		private string PerformEncryption(EncryptionInputData data)
+		{
+			_currentInputData = data;
+			var aes = MakeAesEncryption();
+			return Encrypt(aes);
+		}
+
+		private string PerformDecryption(EncryptionInputData data)
+		{
+			_currentInputData = data;
+			var aes = MakeAesEncryption();
+			return Decrypt(aes);
 		}
 
 		private byte[] FromStringToByteArray(string source)
@@ -150,9 +200,7 @@ namespace EasyCSharpEncryptor.Features
 		private void OnGenerateSaltButtonClicked()
 		{
 			var salt = GenerateSalt();
-			Proxy.EncryptionForm.SetSaltText(BitConverter.ToString(salt));
-			Proxy.MainForm.HideWarning();
+			SaltGenerateEvent?.Invoke(BitConverter.ToString(salt));
 		}
-
 	}
 }

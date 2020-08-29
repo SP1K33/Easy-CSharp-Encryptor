@@ -4,21 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using EasyCSharpEncryptor.Responses;
 
 namespace EasyCSharpEncryptor.Features
 {
 	public class PasswordGenerator
 	{
-		public PasswordGenerator()
-		{
-			Proxy.PasswordGeneratorForm.GeneratePasswordButtonClickEvent += OnPasswordGeneratorFormButtonClicked;
-			Proxy.EncryptionForm.GeneratePasswordButtonClickEvent += OnEncryptionFormButtonClicked;
-		}
-
 		~PasswordGenerator()
 		{
-			Proxy.PasswordGeneratorForm.GeneratePasswordButtonClickEvent -= OnPasswordGeneratorFormButtonClicked;
-			Proxy.EncryptionForm.GeneratePasswordButtonClickEvent -= OnEncryptionFormButtonClicked;
+			Proxy.PasswordGeneratorForm.GeneratePasswordButtonClickEvent -= OnGeneratePasswordClicked;
+			Proxy.EncryptionForm.GeneratePasswordButtonClickEvent -= OnGeneratePasswordClicked;
 		}
 
 		private const string _symbols = "!'#$%&()+,-.:@[]_`~{}";
@@ -28,35 +23,18 @@ namespace EasyCSharpEncryptor.Features
 		private const string _numbers = "0123456789";
 
 		private readonly RNGCryptoServiceProvider _rng = new RNGCryptoServiceProvider();
+		public event Action<string, PasswordResponse> PasswordGenerateEvent;
 
-		private void OnEncryptionFormButtonClicked()
+		public void Init()
 		{
-			var password = Next();
-			if (!string.IsNullOrEmpty(password))
-			{
-				Proxy.EncryptionForm.SetPasswordText(password);
-				Proxy.MainForm.HideWarning();
-			}
-			else
-			{
-				const string warning = "Password generation error";
-				Proxy.MainForm.ShowTip(warning);
-			}
+			Proxy.PasswordGeneratorForm.GeneratePasswordButtonClickEvent += OnGeneratePasswordClicked;
+			Proxy.EncryptionForm.GeneratePasswordButtonClickEvent += OnGeneratePasswordClicked;
 		}
 
-		private void OnPasswordGeneratorFormButtonClicked()
+		private void OnGeneratePasswordClicked()
 		{
 			var password = Next();
-			if (!string.IsNullOrEmpty(password))
-			{
-				Proxy.PasswordGeneratorForm.SetPasswordText(password);
-				Proxy.MainForm.HideWarning();
-			}
-			else
-			{
-				const string warning = "Select at least one of the options";
-				Proxy.MainForm.ShowTip(warning);
-			}
+			PasswordGenerateEvent?.Invoke(password, string.IsNullOrEmpty(password) ? PasswordResponse.PasswordEmpty : PasswordResponse.Success);
 		}
 
 		private string Next()

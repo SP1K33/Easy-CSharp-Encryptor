@@ -51,7 +51,7 @@
 			this.CryptButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.CryptButton.Font = new System.Drawing.Font("Century Gothic", 12F);
 			this.CryptButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-			this.CryptButton.Location = new System.Drawing.Point(374, 140);
+			this.CryptButton.Location = new System.Drawing.Point(378, 144);
 			this.CryptButton.Name = "CryptButton";
 			this.CryptButton.Size = new System.Drawing.Size(26, 123);
 			this.CryptButton.TabIndex = 26;
@@ -63,32 +63,32 @@
 			// 
 			this.ResultTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
 			this.ResultTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-			this.ResultTextBox.Location = new System.Drawing.Point(409, 140);
+			this.ResultTextBox.Location = new System.Drawing.Point(414, 144);
 			this.ResultTextBox.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-			this.ResultTextBox.MinimumSize = new System.Drawing.Size(358, 123);
+			this.ResultTextBox.MinimumSize = new System.Drawing.Size(356, 123);
 			this.ResultTextBox.Multiline = true;
 			this.ResultTextBox.Name = "ResultTextBox";
 			this.ResultTextBox.ReadOnly = true;
-			this.ResultTextBox.Size = new System.Drawing.Size(358, 123);
+			this.ResultTextBox.Size = new System.Drawing.Size(356, 123);
 			this.ResultTextBox.TabIndex = 32;
 			// 
 			// SourceTextBox
 			// 
 			this.SourceTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
 			this.SourceTextBox.ForeColor = System.Drawing.Color.Green;
-			this.SourceTextBox.Location = new System.Drawing.Point(8, 140);
+			this.SourceTextBox.Location = new System.Drawing.Point(13, 144);
 			this.SourceTextBox.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-			this.SourceTextBox.MinimumSize = new System.Drawing.Size(358, 123);
+			this.SourceTextBox.MinimumSize = new System.Drawing.Size(356, 123);
 			this.SourceTextBox.Multiline = true;
 			this.SourceTextBox.Name = "SourceTextBox";
-			this.SourceTextBox.Size = new System.Drawing.Size(358, 123);
+			this.SourceTextBox.Size = new System.Drawing.Size(356, 123);
 			this.SourceTextBox.TabIndex = 33;
 			// 
 			// SourceLabel
 			// 
 			this.SourceLabel.AutoSize = true;
 			this.SourceLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-			this.SourceLabel.Location = new System.Drawing.Point(149, 115);
+			this.SourceLabel.Location = new System.Drawing.Point(149, 119);
 			this.SourceLabel.Name = "SourceLabel";
 			this.SourceLabel.Size = new System.Drawing.Size(67, 21);
 			this.SourceLabel.TabIndex = 34;
@@ -98,7 +98,7 @@
 			// 
 			this.ResultLabel.AutoSize = true;
 			this.ResultLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-			this.ResultLabel.Location = new System.Drawing.Point(556, 115);
+			this.ResultLabel.Location = new System.Drawing.Point(556, 119);
 			this.ResultLabel.Name = "ResultLabel";
 			this.ResultLabel.Size = new System.Drawing.Size(60, 21);
 			this.ResultLabel.TabIndex = 35;
@@ -136,7 +136,7 @@
 			this.PasswordTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
 			this.PasswordTextBox.ForeColor = System.Drawing.Color.Green;
 			this.PasswordTextBox.Location = new System.Drawing.Point(108, 12);
-			this.PasswordTextBox.MinimumSize = new System.Drawing.Size(579, 27);
+			this.PasswordTextBox.MinimumSize = new System.Drawing.Size(596, 27);
 			this.PasswordTextBox.Name = "PasswordTextBox";
 			this.PasswordTextBox.Size = new System.Drawing.Size(596, 27);
 			this.PasswordTextBox.TabIndex = 36;
@@ -149,10 +149,10 @@
 			this.SwitchMode.Font = new System.Drawing.Font("Century Gothic", 12F);
 			this.SwitchMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
 			this.SwitchMode.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.SwitchMode.Location = new System.Drawing.Point(8, 83);
+			this.SwitchMode.Location = new System.Drawing.Point(13, 83);
 			this.SwitchMode.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
 			this.SwitchMode.Name = "SwitchMode";
-			this.SwitchMode.Size = new System.Drawing.Size(759, 32);
+			this.SwitchMode.Size = new System.Drawing.Size(757, 32);
 			this.SwitchMode.TabIndex = 39;
 			this.SwitchMode.Text = "Encrypt";
 			this.SwitchMode.UseVisualStyleBackColor = true;
@@ -163,7 +163,7 @@
 			this.SaltTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
 			this.SaltTextBox.ForeColor = System.Drawing.Color.Green;
 			this.SaltTextBox.Location = new System.Drawing.Point(108, 45);
-			this.SaltTextBox.MinimumSize = new System.Drawing.Size(579, 27);
+			this.SaltTextBox.MinimumSize = new System.Drawing.Size(596, 27);
 			this.SaltTextBox.Name = "SaltTextBox";
 			this.SaltTextBox.Size = new System.Drawing.Size(596, 27);
 			this.SaltTextBox.TabIndex = 40;

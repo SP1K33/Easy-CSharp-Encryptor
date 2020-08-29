@@ -2,18 +2,48 @@
 using EasyCSharpEncryptor.App;
 using EasyCSharpEncryptor.Data;
 using System.Windows.Forms;
+using EasyCSharpEncryptor.Features;
+using EasyCSharpEncryptor.Responses;
 
 namespace EasyCSharpEncryptor.FormLayout
 {
-	public partial class PasswordGeneratorForm : Form
+	public partial class PasswordGeneratorForm : ControllableFormBase
 	{
 		public PasswordGeneratorForm()
 		{
 			InitializeComponent();
-			RestoreData();
 		}
 
 		public event Action GeneratePasswordButtonClickEvent;
+
+		public override void Init()
+		{
+			base.Init();
+			RestoreData();
+		}
+
+		protected override void OnEnable()
+		{
+			Proxy.PasswordGenerator.PasswordGenerateEvent += OnPasswordGenerated;
+		}
+
+		protected override void OnDisable()
+		{
+			Proxy.PasswordGenerator.PasswordGenerateEvent -= OnPasswordGenerated;
+		}
+
+		private void OnPasswordGenerated(string password, PasswordResponse response)
+		{
+			if (response == PasswordResponse.Success)
+			{
+				PasswordResultTextBox.Text = password;
+				Proxy.MainForm.HideTip();
+			}
+			else
+			{
+				Proxy.MainForm.ShowTip("Select at least one of the options");
+			}
+		}
 
 		private void RestoreData()
 		{
@@ -44,11 +74,6 @@ namespace EasyCSharpEncryptor.FormLayout
 			{
 				IncludeUppercaseCheckbox.CheckState = CheckState.Checked;
 			}
-		}
-
-		public void SetPasswordText(string password)
-		{
-			PasswordResultTextBox.Text = password;
 		}
 
 		private void OnGeneratePasswordButtonClicked(object sender, EventArgs e)
