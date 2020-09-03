@@ -3,17 +3,13 @@ using EasyCSharpEncryptor.Responses;
 using System;
 using System.Security.Cryptography;
 using System.Text;
+using EasyCSharpEncryptor.Containers;
+using EasyCSharpEncryptor.Dependency;
 
 namespace EasyCSharpEncryptor.Features
 {
-	public class Cryptor
+	public class Cryptor : IDependent
 	{
-		~Cryptor()
-		{
-			Proxy.EncryptionForm.CryptButtonClickEvent -= OnCryptButtonClicked;
-			Proxy.EncryptionForm.GenerateSaltButtonClickEvent -= OnGenerateSaltButtonClicked;
-		}
-
 		public struct EncryptionInputData
 		{
 			public string Salt;
@@ -31,10 +27,16 @@ namespace EasyCSharpEncryptor.Features
 		public event Action<string> SaltGenerateEvent;
 		public event Action<string, EncryptionResponse> EncryptionCompleteEvent;
 
-		public void Init()
+		public void Enable()
 		{
-			Proxy.EncryptionForm.CryptButtonClickEvent += OnCryptButtonClicked;
-			Proxy.EncryptionForm.GenerateSaltButtonClickEvent += OnGenerateSaltButtonClicked;
+			FormsContainer.EncryptionForm.CryptButtonClickEvent += OnCryptButtonClicked;
+			FormsContainer.EncryptionForm.GenerateSaltButtonClickEvent += OnGenerateSaltButtonClicked;
+		}
+
+		public void Disable()
+		{
+			FormsContainer.EncryptionForm.CryptButtonClickEvent -= OnCryptButtonClicked;
+			FormsContainer.EncryptionForm.GenerateSaltButtonClickEvent -= OnGenerateSaltButtonClicked;
 		}
 
 		public string GetMasterSalt()

@@ -1,9 +1,10 @@
-﻿using EasyCSharpEncryptor.App;
+﻿using EasyCSharpEncryptor.Containers;
+using EasyCSharpEncryptor.Dependency;
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using EasyCSharpEncryptor.Features;
 
 namespace EasyCSharpEncryptor.FormLayout
 {
@@ -16,13 +17,11 @@ namespace EasyCSharpEncryptor.FormLayout
 
 		private enum AnimationState { Opening, Closing }
 		private AnimationState _animationState;
-		private Form _currentChildForm;
 
-		public override void Init()
+		protected override void OnInit()
 		{
-			base.Init();
-			OpenChildForm(Proxy.StorageEntryForm);
 			PlayOpenAnimation();
+			OnEncryptionButtonClicked(EncryptionButton, null);
 		}
 
 		protected override void OnEnable()
@@ -43,34 +42,20 @@ namespace EasyCSharpEncryptor.FormLayout
 		private void OnEncryptionButtonClicked(object sender, EventArgs e)
 		{
 			MoveHighlight((Button)sender);
-			OpenChildForm(Proxy.EncryptionForm);
+			DependencyManager.OpenChildForm(FormsContainer.EncryptionForm);
 		}
 
 		private void OnPasswordGenerationButtonClicked(object sender, EventArgs e)
 		{
 			MoveHighlight((Button)sender);
-			OpenChildForm(Proxy.PasswordGeneratorForm);
+			DependencyManager.OpenChildForm(FormsContainer.PasswordGeneratorForm);
 		}
 
-		private void OnStorageButtonClicked(object sender, EventArgs e)
-		{
-			MoveHighlight((Button)sender);
-			OpenChildForm(Proxy.StorageEntryForm);
-		}
 
-		public void OpenChildForm(Form child)
+		public void AddChildForm(ControllableFormBase form)
 		{
-			if (_currentChildForm == child)
-			{
-				return;
-			}
-
-			Proxy.MainForm.HideTip();
-			_currentChildForm?.Hide();
-			_currentChildForm = child;
-			_currentChildForm.TopLevel = false;
-			ChildFormContainerPanel.Controls.Add(_currentChildForm);
-			_currentChildForm.Show();
+			form.TopLevel = false;
+			ChildFormContainerPanel.Controls.Add(form);
 		}
 
 		private void PlayOpenAnimation()
@@ -134,9 +119,9 @@ namespace EasyCSharpEncryptor.FormLayout
 			AnimationTimer.Start();
 		}
 
-		[System.Runtime.InteropServices.DllImport("user32.dll")]
+		[DllImport("user32.dll")]
 		private static extern int SendMessage(IntPtr hWnd, int msg, int wParam, int lParam);
-		[System.Runtime.InteropServices.DllImport("user32.dll")]
+		[DllImport("user32.dll")]
 		private static extern bool ReleaseCapture();
 
 		private void OnMousePressed(object sender, MouseEventArgs e)

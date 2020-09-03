@@ -29,7 +29,6 @@
 		private void InitializeComponent()
 		{
 			this.IncludeNumbersCheckBox = new System.Windows.Forms.CheckBox();
-			this.PasswordLengthTextBox = new System.Windows.Forms.TextBox();
 			this.PasswordLengthLabel = new System.Windows.Forms.Label();
 			this.IncludeNumbersLabel = new System.Windows.Forms.Label();
 			this.GeneratePasswordButton = new System.Windows.Forms.Button();
@@ -42,6 +41,8 @@
 			this.IncludeLowercaseCheckbox = new System.Windows.Forms.CheckBox();
 			this.IncludeAmbiguousCharactersLabel = new System.Windows.Forms.Label();
 			this.IncludeSymbolsCheckbox = new System.Windows.Forms.CheckBox();
+			this.PasswordNumeric = new System.Windows.Forms.NumericUpDown();
+			((System.ComponentModel.ISupportInitialize)(this.PasswordNumeric)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// IncludeNumbersCheckBox
@@ -55,21 +56,6 @@
 			this.IncludeNumbersCheckBox.TabIndex = 33;
 			this.IncludeNumbersCheckBox.UseVisualStyleBackColor = true;
 			this.IncludeNumbersCheckBox.CheckedChanged += new System.EventHandler(this.OnIncludeNumbersCheckBoxChanged);
-			// 
-			// PasswordLengthTextBox
-			// 
-			this.PasswordLengthTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
-			this.PasswordLengthTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-			this.PasswordLengthTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-			this.PasswordLengthTextBox.Location = new System.Drawing.Point(293, 7);
-			this.PasswordLengthTextBox.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-			this.PasswordLengthTextBox.MaxLength = 3;
-			this.PasswordLengthTextBox.Name = "PasswordLengthTextBox";
-			this.PasswordLengthTextBox.Size = new System.Drawing.Size(52, 27);
-			this.PasswordLengthTextBox.TabIndex = 26;
-			this.PasswordLengthTextBox.Text = "888";
-			this.PasswordLengthTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			this.PasswordLengthTextBox.TextChanged += new System.EventHandler(this.OnPasswordLengthTextBoxChanged);
 			// 
 			// PasswordLengthLabel
 			// 
@@ -228,6 +214,22 @@
 			this.IncludeSymbolsCheckbox.UseVisualStyleBackColor = true;
 			this.IncludeSymbolsCheckbox.CheckedChanged += new System.EventHandler(this.OnIncludeSymbolsCheckBoxChanged);
 			// 
+			// PasswordNumeric
+			// 
+			this.PasswordNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+			this.PasswordNumeric.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+			this.PasswordNumeric.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+			this.PasswordNumeric.Location = new System.Drawing.Point(259, 8);
+			this.PasswordNumeric.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+			this.PasswordNumeric.Name = "PasswordNumeric";
+			this.PasswordNumeric.Size = new System.Drawing.Size(65, 27);
+			this.PasswordNumeric.TabIndex = 34;
+			this.PasswordNumeric.ValueChanged += new System.EventHandler(this.OnPasswordNumericChanged);
+			// 
 			// PasswordGeneratorForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -235,8 +237,8 @@
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
 			this.ClientSize = new System.Drawing.Size(783, 273);
 			this.ControlBox = false;
+			this.Controls.Add(this.PasswordNumeric);
 			this.Controls.Add(this.IncludeNumbersCheckBox);
-			this.Controls.Add(this.PasswordLengthTextBox);
 			this.Controls.Add(this.PasswordLengthLabel);
 			this.Controls.Add(this.IncludeNumbersLabel);
 			this.Controls.Add(this.GeneratePasswordButton);
@@ -253,6 +255,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
 			this.Name = "PasswordGeneratorForm";
+			((System.ComponentModel.ISupportInitialize)(this.PasswordNumeric)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -261,7 +264,6 @@
 		#endregion
 
 		private System.Windows.Forms.CheckBox IncludeNumbersCheckBox;
-		private System.Windows.Forms.TextBox PasswordLengthTextBox;
 		private System.Windows.Forms.Label PasswordLengthLabel;
 		private System.Windows.Forms.Label IncludeNumbersLabel;
 		private System.Windows.Forms.Button GeneratePasswordButton;
@@ -274,5 +276,6 @@
 		private System.Windows.Forms.CheckBox IncludeLowercaseCheckbox;
 		private System.Windows.Forms.Label IncludeAmbiguousCharactersLabel;
 		private System.Windows.Forms.CheckBox IncludeSymbolsCheckbox;
+		private System.Windows.Forms.NumericUpDown PasswordNumeric;
 	}
 }

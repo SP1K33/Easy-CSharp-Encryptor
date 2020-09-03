@@ -1,21 +1,16 @@
-﻿using EasyCSharpEncryptor.App;
+﻿using EasyCSharpEncryptor.Containers;
 using EasyCSharpEncryptor.Data;
+using EasyCSharpEncryptor.Dependency;
+using EasyCSharpEncryptor.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
-using EasyCSharpEncryptor.Responses;
 
 namespace EasyCSharpEncryptor.Features
 {
-	public class PasswordGenerator
+	public class PasswordGenerator : IDependent
 	{
-		~PasswordGenerator()
-		{
-			Proxy.PasswordGeneratorForm.GeneratePasswordButtonClickEvent -= OnGeneratePasswordClicked;
-			Proxy.EncryptionForm.GeneratePasswordButtonClickEvent -= OnGeneratePasswordClicked;
-		}
-
 		private const string _symbols = "!'#$%&()+,-.:@[]_`~{}";
 		private const string _ambiguous = "/\\:*?<>|";
 		private const string _upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -25,28 +20,33 @@ namespace EasyCSharpEncryptor.Features
 		private readonly RNGCryptoServiceProvider _rng = new RNGCryptoServiceProvider();
 		public event Action<string, PasswordResponse> PasswordGenerateEvent;
 
-		public void Init()
+		public void Enable()
 		{
-			Proxy.PasswordGeneratorForm.GeneratePasswordButtonClickEvent += OnGeneratePasswordClicked;
-			Proxy.EncryptionForm.GeneratePasswordButtonClickEvent += OnGeneratePasswordClicked;
+			FormsContainer.PasswordGeneratorForm.GeneratePasswordButtonClickEvent += OnGeneratePasswordClicked;
+			FormsContainer.EncryptionForm.GeneratePasswordButtonClickEvent += OnGeneratePasswordClicked;
+		}
+
+		public void Disable()
+		{
+			FormsContainer.PasswordGeneratorForm.GeneratePasswordButtonClickEvent -= OnGeneratePasswordClicked;
+			FormsContainer.EncryptionForm.GeneratePasswordButtonClickEvent -= OnGeneratePasswordClicked;
 		}
 
 		private void OnGeneratePasswordClicked()
 		{
 			var password = Next();
-			PasswordGenerateEvent?.Invoke(password, string.IsNullOrEmpty(password) ? PasswordResponse.PasswordEmpty : PasswordResponse.Success);
+			PasswordGenerateEvent?.Invoke(password, string.IsNullOrEmpty(password) ? PasswordResponse.CreationError : PasswordResponse.Success);
 		}
 
 		private string Next()
 		{
-			var data = Proxy.DataContainer.GetData<PasswordGenerationData>();
-
+			var data = FeaturesContainer.DataContainer.GetData<PasswordGenerationData>();
 			var characterSet = GetCharacterSet();
-
 			if (characterSet.Length == 0)
 			{
 				return string.Empty;
 			}
+
 
 			characterSet = Shuffle(characterSet);
 
@@ -70,7 +70,7 @@ namespace EasyCSharpEncryptor.Features
 		private char[] GetCharacterSet()
 		{
 			string result = string.Empty;
-			var data = Proxy.DataContainer.GetData<PasswordGenerationData>();
+			var data = FeaturesContainer.DataContainer.GetData<PasswordGenerationData>();
 
 			if (data.IncludeSymbols)
 			{

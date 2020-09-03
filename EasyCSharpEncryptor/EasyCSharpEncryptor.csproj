@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0DEA35C9-1902-4B98-B728-BD54220B7B7C}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>EasyCSharpEncryptor</RootNamespace>
     <AssemblyName>EasyCSharpEncryptor</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -52,9 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App\Proxy.cs" />
+    <Compile Include="Dependency\DependencyManager.cs" />
+    <Compile Include="Dependency\IInitializable.cs" />
+    <Compile Include="Containers\FormsContainer.cs" />
+    <Compile Include="Containers\FeaturesContainer.cs" />
+    <Compile Include="Dependency\IDependent.cs" />
     <Compile Include="Data\DataContainer.cs" />
-    <Compile Include="Data\StorageData.cs" />
     <Compile Include="FormLayout\ControllableFormBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,7 +65,6 @@
     <Compile Include="Data\PasswordGenerationData.cs" />
     <Compile Include="Features\EncryptionMode.cs" />
     <Compile Include="Features\PasswordGenerator.cs" />
-    <Compile Include="Features\StorageHolder.cs" />
     <Compile Include="FormLayout\EncryptionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,28 +84,9 @@
     <Compile Include="FormLayout\PasswordGeneratorForm.Designer.cs">
       <DependentUpon>PasswordGeneratorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLayout\StorageEntryForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormLayout\StorageEntryForm.Designer.cs">
-      <DependentUpon>StorageEntryForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormLayout\CreateStorageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormLayout\CreateStorageForm.Designer.cs">
-      <DependentUpon>CreateStorageForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormLayout\StorageViewForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormLayout\StorageViewForm.Designer.cs">
-      <DependentUpon>StorageViewForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Responses\EncryptionResponse.cs" />
     <Compile Include="Responses\PasswordResponse.cs" />
-    <Compile Include="Responses\StorageCreateResponse.cs" />
     <EmbeddedResource Include="FormLayout\EncryptionForm.resx">
       <DependentUpon>EncryptionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,15 +100,6 @@
     <EmbeddedResource Include="FormLayout\PasswordGeneratorForm.resx">
       <DependentUpon>PasswordGeneratorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormLayout\StorageEntryForm.resx">
-      <DependentUpon>StorageEntryForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormLayout\CreateStorageForm.resx">
-      <DependentUpon>CreateStorageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormLayout\StorageViewForm.resx">
-      <DependentUpon>StorageViewForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -134,6 +108,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using EasyCSharpEncryptor.Containers;
+using EasyCSharpEncryptor.Dependency;
 
 namespace EasyCSharpEncryptor.App
 {
@@ -10,8 +12,14 @@ namespace EasyCSharpEncryptor.App
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Proxy.Init();
-			Application.Run(Proxy.MainForm);
+
+			FormsContainer.CreateForms();
+			FeaturesContainer.CreateFeatures();
+
+			FeaturesContainer.DataContainer.Init();
+			DependencyManager.Init();
+
+			Application.Run(FormsContainer.MainForm);
 		}
 	}
 }
