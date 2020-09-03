@@ -45,6 +45,7 @@ namespace EasyCSharpEncryptor.FormLayout
 			this.AnimationTimer = new System.Windows.Forms.Timer(this.components);
 			this.ChildFormContainerPanel = new System.Windows.Forms.Panel();
 			this.GitHubButton = new System.Windows.Forms.Button();
+			this.MinimizeButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// Title
@@ -116,11 +117,23 @@ namespace EasyCSharpEncryptor.FormLayout
 			this.GitHubButton.UseVisualStyleBackColor = true;
 			this.GitHubButton.Click += new System.EventHandler(this.OnGitHubButtonClicked);
 			// 
+			// MinimizeButton
+			// 
+			this.MinimizeButton.BackColor = System.Drawing.SystemColors.ControlLight;
+			resources.ApplyResources(this.MinimizeButton, "MinimizeButton");
+			this.MinimizeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.MinimizeButton.FlatAppearance.BorderSize = 0;
+			this.MinimizeButton.ForeColor = System.Drawing.Color.Black;
+			this.MinimizeButton.Name = "MinimizeButton";
+			this.MinimizeButton.UseVisualStyleBackColor = false;
+			this.MinimizeButton.Click += new System.EventHandler(this.OnMinimizeButtonClicked);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
 			resources.ApplyResources(this, "$this");
+			this.Controls.Add(this.MinimizeButton);
 			this.Controls.Add(this.EncryptionButton);
 			this.Controls.Add(this.PasswordGenerationButton);
 			this.Controls.Add(this.GitHubButton);
@@ -148,6 +161,7 @@ namespace EasyCSharpEncryptor.FormLayout
 		private System.Windows.Forms.Timer AnimationTimer;
 		private System.Windows.Forms.Panel ChildFormContainerPanel;
 		private System.Windows.Forms.Button GitHubButton;
+		private System.Windows.Forms.Button MinimizeButton;
 	}
 }
 

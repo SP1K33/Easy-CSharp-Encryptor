@@ -1,10 +1,9 @@
-﻿using EasyCSharpEncryptor.App;
+﻿using EasyCSharpEncryptor.Containers;
+using EasyCSharpEncryptor.Dependency;
 using EasyCSharpEncryptor.Responses;
 using System;
 using System.Security.Cryptography;
 using System.Text;
-using EasyCSharpEncryptor.Containers;
-using EasyCSharpEncryptor.Dependency;
 
 namespace EasyCSharpEncryptor.Features
 {
@@ -37,12 +36,6 @@ namespace EasyCSharpEncryptor.Features
 		{
 			FormsContainer.EncryptionForm.CryptButtonClickEvent -= OnCryptButtonClicked;
 			FormsContainer.EncryptionForm.GenerateSaltButtonClickEvent -= OnGenerateSaltButtonClicked;
-		}
-
-		public string GetMasterSalt()
-		{
-			var saltBytes = new byte[] { 0x0, 0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0xF1, 0xF0, 0xEE, 0x21, 0x22, 0x45 };
-			return BitConverter.ToString(saltBytes);
 		}
 
 		private RijndaelManaged MakeAesEncryption()
